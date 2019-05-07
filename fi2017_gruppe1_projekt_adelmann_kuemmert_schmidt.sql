@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 07. Mai 2019 um 09:42
+-- Erstellungszeit: 07. Mai 2019 um 10:23
 -- Server-Version: 10.1.32-MariaDB
 -- PHP-Version: 7.2.5
 
@@ -77,8 +77,16 @@ CREATE TABLE `nutzer` (
   `ID` int(5) NOT NULL,
   `Nutzername` varchar(25) COLLATE latin1_german1_ci DEFAULT NULL,
   `Passwort` varchar(100) COLLATE latin1_german1_ci DEFAULT NULL,
-  `Email` varchar(50) COLLATE latin1_german1_ci DEFAULT NULL
+  `Email` varchar(50) COLLATE latin1_german1_ci DEFAULT NULL,
+  `Admin` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_german1_ci;
+
+--
+-- Daten für Tabelle `nutzer`
+--
+
+INSERT INTO `nutzer` (`ID`, `Nutzername`, `Passwort`, `Email`, `Admin`) VALUES
+(1, 'Padoru', '$2y$10$IFk0eA4Ax3iYJRRpDrMmK.I/T.dbe49Ki6o0h3ior/9J/NZH0PDlq', 'Umu@Nero.com', 1);
 
 -- --------------------------------------------------------
 
@@ -165,7 +173,7 @@ ALTER TABLE `kommentar`
 -- AUTO_INCREMENT für Tabelle `nutzer`
 --
 ALTER TABLE `nutzer`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT für Tabelle `post`
