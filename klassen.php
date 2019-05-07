@@ -94,4 +94,45 @@
     		$this->email=$email;
   		}
   	}
+  	
+  	class Kommentar
+	{
+  		private $id;
+  		private $ueberschrift;
+  		private $inhalt;
+  		private $veroeffentlichung;
+
+  		public function getId()
+  		{
+   			return $this->id;
+  		}
+  		public function setId($id)
+  		{
+    		$this->id=$id;
+  		}
+  		public function getInhalt()
+  		{
+   			return $this->inhalt;
+  		}
+  		public function setInhalt($inhalt)
+  		{
+    		$this->inhalt=$inhalt;
+  		}
+  		public function getVeroeffentlichung()
+  		{
+   			return $this->veroeffentlichung;
+  		}
+  		public function setVeroeffentlichung($veroeffentlichung)
+  		{
+    		$this->veroeffentlichung=$veroeffentlichung;
+  		}
+  		public function getUeberschrift()
+  		{
+   			return $this->ueberschrift;
+  		}
+  		public function setUeberschrift($ueberschrift)
+  		{
+    		$this->ueberschrift=$ueberschrift;
+  		}
+  	}
 ?>
