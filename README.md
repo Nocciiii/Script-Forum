@@ -5,3 +5,7 @@ Admin:
 Nutzername: Padoru
 Email: Umu@Nero.com
 Passwort: Umu
+
+
+Namevorschläge für das Endprodukt:
+Nero's Burning Paradise
