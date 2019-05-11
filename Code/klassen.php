@@ -21,7 +21,7 @@
     		$this->pfad=$pfad;
   		}
   	}
-  	
+
   	class Kommentar
 	{
   		private $id;
@@ -53,7 +53,7 @@
     		$this->veroeffentlichung=$veroeffentlichung;
   		}
   	}
-  	
+
   	class Nutzer
 	{
   		private $id;
@@ -94,13 +94,14 @@
     		$this->email=$email;
   		}
   	}
-  	
+
   	class Kommentar
 	{
   		private $id;
   		private $ueberschrift;
   		private $inhalt;
   		private $veroeffentlichung;
+			private $kommentare;
 
   		public function getId()
   		{
@@ -133,6 +134,14 @@
   		public function setUeberschrift($ueberschrift)
   		{
     		$this->ueberschrift=$ueberschrift;
+  		}
+			public function getKommentare()
+  		{
+   			return $this->kommentare;
+  		}
+  		public function setKommentare($kommentare)
+  		{
+    		$this->kommentare=$kommentare;
   		}
   	}
 ?>

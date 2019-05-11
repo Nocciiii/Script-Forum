@@ -15,9 +15,24 @@
     foreach($pdo->query('SELECT * from post') as $row)
     {
       $post = new Post();
-	  $anime->setId($row[0]);
-      $anime->setUeberschrift($row[1]);
-
+	  $post->setId($row[0]);
+      $post->setUeberschrift($row[1]);
+      $post->setInhalt($row[2]);
+      $post->setVeroeffentlichung($row[3]);
+      $kommentar_array=array();
+      foreach($pdo->query('SELECT *
+          FROM kommentar k
+          JOIN kommentar_post kp
+          ON k.ID = kp.KommentarID
+          AND kp.PostID='$row[0])
+      {
+        $kommentar= new Kommentar();
+        $kommentar->setId($row[0]);
+        $kommentar->setText($row[1]);
+        $kommentar->setVeroeffentlichung($row[0]);
+        $kommentar_array[]=$kommentar;
+      }
+      $post->setKommentare($kommentar_array);
       $post_array[]=$post;
     }
   }
