@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 07. Mai 2019 um 10:23
+-- Erstellungszeit: 14. Mai 2019 um 10:48
 -- Server-Version: 10.1.32-MariaDB
 -- PHP-Version: 7.2.5
 
@@ -121,6 +121,17 @@ CREATE TABLE `post` (
   `Ueberschrift` varchar(150) COLLATE latin1_german1_ci DEFAULT NULL,
   `Inhalt` varchar(2000) COLLATE latin1_german1_ci DEFAULT NULL,
   `Veroeffentlichung` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_german1_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `post_kommentar`
+--
+
+CREATE TABLE `post_kommentar` (
+  `PostID` int(5) DEFAULT NULL,
+  `KommentarID` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_german1_ci;
 
 --
