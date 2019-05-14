@@ -95,13 +95,14 @@
   		}
   	}
 
-  	class Kommentar
+  	class Post
 	{
   		private $id;
   		private $ueberschrift;
   		private $inhalt;
   		private $veroeffentlichung;
-			private $kommentare;
+		private $kommentare;
+		private $kommentaranzahl;
 
   		public function getId()
   		{
@@ -135,13 +136,21 @@
   		{
     		$this->ueberschrift=$ueberschrift;
   		}
-			public function getKommentare()
+		public function getKommentare()
   		{
    			return $this->kommentare;
   		}
   		public function setKommentare($kommentare)
   		{
     		$this->kommentare=$kommentare;
+  		}
+  			public function getKommentaranzahl()
+  		{
+   			return $this->kommentaranzahl;
+  		}
+  		public function setKommentaranzahl($kommentaranzahl)
+  		{
+    		$this->kommentaranzahl=$kommentaranzahl;
   		}
   	}
 ?>

@@ -20,6 +20,7 @@
       $post->setInhalt($row[2]);
       $post->setVeroeffentlichung($row[3]);
       $kommentar_array=array();
+      $post->setKommentaranzahl(0);
       foreach($pdo->query('SELECT *
           FROM kommentar k
           JOIN kommentar_post kp
@@ -31,10 +32,12 @@
         $kommentar->setText($row[1]);
         $kommentar->setVeroeffentlichung($row[0]);
         $kommentar_array[]=$kommentar;
+        $post->setKommentaranzahl($post->getKommentaranzahl()+1);
       }
       $post->setKommentare($kommentar_array);
       $post_array[]=$post;
     }
+    usort($post_arraym, "cmp");
   }
   catch(Exception $e)
   {
@@ -45,5 +48,24 @@
   {
 	  session_destroy();
 	  header("Refresh:0; url=Startseite.php");
+  }
+  function cmp($time1, $time2)
+  {
+  	if($time1<$time2)
+  	{
+		return 1;
+	}
+	else
+	{
+		if($time1>$time2)
+		{
+			return -1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+  	
   }
 ?>
