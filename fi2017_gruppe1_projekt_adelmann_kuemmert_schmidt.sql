@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 14. Mai 2019 um 10:48
+-- Erstellungszeit: 21. Mai 2019 um 10:54
 -- Server-Version: 10.1.32-MariaDB
 -- PHP-Version: 7.2.5
 
@@ -86,7 +86,8 @@ CREATE TABLE `nutzer` (
 --
 
 INSERT INTO `nutzer` (`ID`, `Nutzername`, `Passwort`, `Email`, `Admin`) VALUES
-(1, 'Padoru', '$2y$10$IFk0eA4Ax3iYJRRpDrMmK.I/T.dbe49Ki6o0h3ior/9J/NZH0PDlq', 'Umu@Nero.com', 1);
+(1, 'Padoru', '$2y$10$IFk0eA4Ax3iYJRRpDrMmK.I/T.dbe49Ki6o0h3ior/9J/NZH0PDlq', 'Umu@Nero.com', 1),
+(2, 'TheAllMightyPotatoBeing', '$2y$10$Z7YRmIZblEK47zM3WSCiZuGMdCikllRu7YnwTtGlCP2OwSeJhRiOW', 'praise@potato.com', 1);
 
 -- --------------------------------------------------------
 
@@ -184,7 +185,7 @@ ALTER TABLE `kommentar`
 -- AUTO_INCREMENT für Tabelle `nutzer`
 --
 ALTER TABLE `nutzer`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT für Tabelle `post`
