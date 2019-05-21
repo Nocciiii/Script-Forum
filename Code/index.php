@@ -19,42 +19,22 @@
         <p>Bitte melden Sie sich mit ihren Daten an.</p>
 		</div>
 		<div class="modal-body">
-        <form action="?register=1" method="post">
+        <form action="?registrieren=1" method="post">
             <div class="form-group">
                 <label>Username</label>
                 <input type="text" name="username" class="form-control">
             </div>
             <div class="form-group">
                 <label>E-Mail</label>
-                <input type="text" name="email" class="form-control">
+                <input type="email" name="email" class="form-control">
             </div>
             <div class="form-group">
                 <label>Passwort</label>
                 <input type="password" name="password" class="form-control">
             </div>
             <div class="form-group">
-                <label>Bestätigen</label>
-                <input type="password" name="password2" class="form-control">
-            </div>
-            <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Registrieren">
             </div>
-				<?php
-            if($errorRegister == 'Du wurdest erfolgreich registriert. <a href="Registrieren.php">Zum Login</a>')
-            {
-        ?>
-						  <span class="erfolgreich"><?=$errorRegister;?></span>
-        <?php
-              $errorRegister=null;
-            }
-            else if(isset($errorRegister) && !empty($errorRegister))
-					  {
-				?>
-					   <span class="error"><?=$errorRegister;?></span>
-	      <?php
-              $errorRegister=null;
-            }
-				?>
 		</form>
 		</div>
 		<div class="modal-footer">
@@ -75,7 +55,7 @@
         <p>Bitte melden Sie sich mit ihren Daten an.</p>
 		</div>
 		<div class="modal-body">
-        <form action="?loggedin=false" method="post">
+        <form action="?login=1" method="post">
             <div class="form-group">
                 <label>Username</label>
                 <input type="text" name="username" class="form-control">
@@ -87,15 +67,6 @@
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Login">
             </div>
-				<?php
-					if(isset($errorLogin) && !empty($errorLogin))
-					{
-				?>
-						<span class="error"><?= $errorLogin; ?></span>
-				<?php
-            $errorLogin=null;
-					}
-				?>
 		</form>
 		</div>
 		<div class="modal-footer">
