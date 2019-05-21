@@ -4,9 +4,91 @@
   		<title>Navigation Beispiel 1</title>
   		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
           <link rel="stylesheet" href="../css/bootstrap.min.css" />
-          <link rel="stylesheet" href="layout/tutorial.css" />
+          <link rel="stylesheet" href="tutorial.css" />
   		<script src="../js/jquery-3.1.1.min.js"></script>
   		<script src="../js/bootstrap.min.js"></script>
+		
+		<?php
+		session_start();
+
+		$server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt;
+		host=localhost';
+		//Wechsel zwischen User wenn daheim lol
+		$user='fi11';
+		//$user='root';
+		$pdo = new PDO ($server, $user,'');
+
+		if(isset($_GET['login']))
+		{
+			$username = $_POST['username'];
+			$password = $_POST['password'];
+
+			$statement = $pdo->prepare("SELECT * FROM Nutzer WHERE Nutzername = :username OR Email = :username");
+			$user = $statement->fetch();
+			$hash = $user['Passwort'];
+
+    	//Überprüfung des Passworts
+			if($user !== false && password_verify($password, $hash))
+			{
+				$_SESSION['userid'] = $user['ID'];
+				$_SESSION['email'] = $user['Email'];
+				$_SESSION['passwort'] = $user['Passwort'];
+				$_SESSION['benutzername'] = $user['Nutzername'];
+				$_SESSION['admin'] = $user['Admin'];
+				$errorMessage = "Login erfolgreich!";
+			} else {
+					$errorMessage = "E-Mail oder Passwort war ungültig<br>";
+			}
+		}
+		
+		if(isset($_GET["registrieren"]))
+		{
+			$error = false;
+			$email = $_POST['email'];
+			$username = $_POST['username'];
+			$password = $_POST['password'];
+
+			if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+			{
+				$error = "Bitte eine gültige E-Mail-Adresse eingeben";
+			}
+			if(strlen($password) <= 7)
+			{
+				$error = "Passwort muss 7 zeichen lang sein";
+			}
+
+			if(!$error)
+			{
+			$statement = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+			$result = $statement->execute(array('email' => $email));
+			$user = $statement->fetch();
+				if($user !== false)
+				{
+					$errorMessage = "Diese E-Mail-Adresse ist bereits vergeben";
+				}
+			}
+
+			if(!$error)
+			{
+				$password_hash = password_hash($password, PASSWORD_DEFAULT);
+				$admin = 0;
+				$statement = $pdo->prepare("INSERT INTO Nutzer (Nutzername, Passwort, Email) VALUES (:username, :password, :email)");
+				$result = $statement->execute(array('username' =>$username, 'password' => $password_hash, 'email' => $email));
+
+				if($result) {
+					$_SESSION['email'] = $email;
+					$_SESSION['passwort'] = $password;
+					$_SESSION['benutzername'] = $username;
+					$_SESSION['admin'] = 0;
+					$showFormular = false;
+					//die(header ("LOCATION: Startseite.php"));
+				} else {
+					echo 'Beim Registrieren gab es einen Fehler';
+				}
+			}
+		}
+	?>
+		
   	</head>
 
     <div id="ModalRegister" class="modal">
