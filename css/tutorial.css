@@ -1,0 +1,14 @@
+body {
+  padding-top: 15px;
+}
+
+.row {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: lightblue;
+  border: 1px solid midnightblue;
+}
+
+.col-md-3, .col-md-9 {
+  border-left: 1px solid darkcyan;
+}
