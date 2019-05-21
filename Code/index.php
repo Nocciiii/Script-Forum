@@ -50,11 +50,11 @@
 
 			if(!filter_var($email, FILTER_VALIDATE_EMAIL))
 			{
-				$error = "Bitte eine gültige E-Mail-Adresse eingeben";
+				$errorMessage = "Bitte eine gültige E-Mail-Adresse eingeben";
 			}
 			if(strlen($password) <= 7)
 			{
-				$error = "Passwort muss 7 zeichen lang sein";
+				$errorMessage = "Passwort muss 7 zeichen lang sein";
 			}
 
 			if(!$error)
@@ -116,6 +116,13 @@
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Registrieren">
+            </div>
+			<div class="form-group">
+                <?php
+					if(isset($errorMessage)) {
+    					echo $errorMessage;
+					}
+				?>
             </div>
 		</form>
 		</div>
