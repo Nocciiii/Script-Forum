@@ -39,6 +39,21 @@
     }
     usort($post_arraym, "cmp");
   }
+
+
+  //Senden der Posts in forgegebener form an index zur ausgabe
+  function Textausgeben
+  {
+    foreach ($post_array as $key => $kommentar)
+    {
+      //ToDo ArrayElement pasend ausgeben
+      var ueberschrift = "<div class='col-md-12'><h1>" $komentar.getUeberschrift"</h1>"
+      var inhalt = $kommentar.getText"</div>"
+
+      $("#table").append(ueberschrift, inhalt);
+    }
+  }
+
   catch(Exception $e)
   {
 	   die("Errpr!:".$e->getMessage());
@@ -49,7 +64,7 @@
 	  session_destroy();
 	  header("Refresh:0; url=Startseite.php");
   }
-  
+
   function cmp($time1, $time2)
   {
   	if($time1<$time2)
