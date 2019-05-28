@@ -81,9 +81,9 @@
         }
       ?>
 
-  	</head>
-
-    <div id="ModalRegister" class="modal">
+</head>
+  <?php include ("Startseite_Datenbankauslesen.php"); ?>
+  <div id="ModalRegister" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
@@ -235,99 +235,16 @@
           </div>
         </div>
 
-        <div class="col-md-6">
-            <div class="col-md-12">
-              col-md-9(Inhalt)
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-              </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-            </div>
-        </div>
+        <?php
+          echo("<div class='col-md-6'>");
+          foreach ($variable as $key => $value)
+          {
+            echo("<div class='col-md-12'>");
+            echo("HIER DER ARRAY WERT");
+            echo("</div>");
+          }
+          echo("</div>");
+        ?>
 
         <div class="col-md-3">
           <button class="btn d-md-none" data-toggle="collapse" data-target="#Collapsright" aria-expanded="false" aria-controls="collapseOne"></button>

@@ -41,7 +41,7 @@
   }
   catch(Exception $e)
   {
-	die("Errpr!:".$e->getMessage());
+	   die("Errpr!:".$e->getMessage());
   }
 
   if(isset($_GET['logout']))
@@ -49,6 +49,7 @@
 	  session_destroy();
 	  header("Refresh:0; url=Startseite.php");
   }
+  
   function cmp($time1, $time2)
   {
   	if($time1<$time2)
@@ -66,6 +67,6 @@
 			return 0;
 		}
 	}
-  	
+
   }
 ?>
