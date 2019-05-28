@@ -271,6 +271,7 @@
    <script src="../js/ControllStrart.js"></script>
 </body>
 </html>
+
 <script>
 function DatenbankAuslesen()
 {
@@ -289,6 +290,7 @@ function DatenbankAuslesen()
 		sleep(500);
 	}
 }
+
 function Sleep(milliseconds) {
    return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
