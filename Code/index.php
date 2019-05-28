@@ -1,75 +1,4 @@
-<?php
- session_start();
-  include("klassen.php");
-  $server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt ;
-  host=localhost';
-  $user='fi11';
-  $options =array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
-  try
-  {
-    $pdo = new PDO ($server, $user,'',$options);
-    global $post_array;
-	$post_array=array();
-    foreach($pdo->query('SELECT * from post') as $row)
-    {
-      $post = new Post();
-	  $post->setId($row[0]);
-      $post->setUeberschrift($row[1]);
-      $post->setInhalt($row[2]);
-      $post->setVeroeffentlichung($row[3]);
-      $kommentar_array=array();
-      $post->setKommentaranzahl(0);
-      foreach($pdo->query('SELECT *
-          FROM kommentar k
-          JOIN kommentar_post kp
-          ON k.ID = kp.KommentarID
-          AND kp.PostID='$row[0])
-      {
-        $kommentar= new Kommentar();
-        $kommentar->setId($row[0]);
-        $kommentar->setText($row[1]);
-        $kommentar->setVeroeffentlichung($row[0]);
-        $kommentar_array[]=$kommentar;
-        $post->setKommentaranzahl($post->getKommentaranzahl()+1);
-      }
-      $post->setKommentare($kommentar_array);
-      $post_array[]=$post;
-    }
-    usort($post_arraym, "cmp");
-  }
-  catch(Exception $e)
-  {
-	die("Errpr!:".$e->getMessage());
-  }
-  if(isset($_GET['logout']))
-  {
-	  session_destroy();
-	  header("Refresh:0; url=Startseite.php");
-  }
-  function cmp($time1, $time2)
-  {
-  	if($time1<$time2)
-  	{
-		return 1;
-	}
-	else
-	{
-		if($time1>$time2)
-		{
-			return -1;
-		}
-		else
-		{
-			return 0;
-		}
-	}
-
-  }
-?>
 <html >
-	<script>
-	DatenbankAuslesen();
-	</script>
     <head>
   		<meta charset="utf-8">
   		<title>Navigation Beispiel 1</title>
@@ -78,200 +7,128 @@
           <link rel="stylesheet" href="tutorial.css" />
   		<script src="../js/jquery-3.1.1.min.js"></script>
   		<script src="../js/bootstrap.min.js"></script>
-<<<<<<< HEAD
-=======
+      <?php include ("Startseite_Datenbankauslesen.php"); ?>
 
-		<?php
-		session_start();
-		$server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt;
-		host=localhost';
-		//Wechsel zwischen User wenn daheim lol
-		$user='fi11';
-		//$user='root';
-		$pdo = new PDO ($server, $user,'');
-		if(isset($_GET['login']))
-		{
-			$username = $_POST['username'];
-			$password = $_POST['password'];
-			$statement = $pdo->prepare("SELECT * FROM Nutzer WHERE Nutzername = :username OR Email = :username");
-			$user = $statement->fetch();
-			$hash = $user['Passwort'];
-    	//�berpr�fung des Passworts
-			if($user !== false && password_verify($password, $hash))
-			{
-				$_SESSION['userid'] = $user['ID'];
-				$_SESSION['email'] = $user['Email'];
-				$_SESSION['passwort'] = $user['Passwort'];
-				$_SESSION['benutzername'] = $user['Nutzername'];
-				$_SESSION['admin'] = $user['Admin'];
-				$errorMessage = "Login erfolgreich!";
-			} else {
-					$errorMessage = "E-Mail oder Passwort war ung�ltig<br>";
-			}
-		}
+		  <?php
+    		session_start();
+    		$server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt;
+    		host=localhost';
 
-		if(isset($_GET["registrieren"]))
-		{
-			$error = false;
-			$email = $_POST['email'];
-			$username = $_POST['username'];
-			$password = $_POST['password'];
-			if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-			{
-				$errorMessage = "Bitte eine g�ltige E-Mail-Adresse eingeben";
-			}
-			if(strlen($password) <= 7)
-			{
-				$errorMessage = "Passwort muss 7 zeichen lang sein";
-			}
-			if(!$error)
-			{
-			$statement = $pdo->prepare("SELECT * FROM users WHERE email = :email");
-			$result = $statement->execute(array('email' => $email));
-			$user = $statement->fetch();
-				if($user !== false)
-				{
-					$errorMessage = "Diese E-Mail-Adresse ist bereits vergeben";
-				}
-			}
-			if(!$error)
-			{
-				$password_hash = password_hash($password, PASSWORD_DEFAULT);
-				$admin = 0;
-				$statement = $pdo->prepare("INSERT INTO Nutzer (Nutzername, Passwort, Email) VALUES (:username, :password, :email)");
-				$result = $statement->execute(array('username' =>$username, 'password' => $password_hash, 'email' => $email));
-				if($result) {
-					$_SESSION['email'] = $email;
-					$_SESSION['passwort'] = $password;
-					$_SESSION['benutzername'] = $username;
-					$_SESSION['admin'] = 0;
-					$showFormular = false;
-					//die(header ("LOCATION: Startseite.php"));
-				} else {
-					echo 'Beim Registrieren gab es einen Fehler';
-				}
-			}
-		}
-	?>
+    		//Wechsel zwischen User wenn daheim lol
+    		$user='fi11';
 
-  	</head>
->>>>>>> 999a14bd673ae49f13b8ac3ced70525df9c986f1
-
-      <?php
-        session_start();
-        $server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt;
-        host=localhost';
-        //Wechsel zwischen User wenn daheim lol
-        $user='fi11';
-        //$user='root';
-        $pdo = new PDO ($server, $user,'');
-        if(isset($_GET['login']))
-        {
-          $username = $_POST['username'];
-          $password = $_POST['password'];
-          $statement = $pdo->prepare("SELECT * FROM Nutzer WHERE Nutzername = :username OR Email = :username");
-          $user = $statement->fetch();
-          $hash = $user['Passwort'];
-          //Überprüfung des Passworts
-          if($user !== false && password_verify($password, $hash))
+    		//$user='root';
+    		$pdo = new PDO ($server, $user,'');
+    		if(isset($_GET['login']))
+    		{
+    			$username = $_POST['username'];
+    			$password = $_POST['password'];
+    			$statement = $pdo->prepare("SELECT * FROM Nutzer WHERE Nutzername = :username OR Email = :username");
+    			$user = $statement->fetch();
+    			$hash = $user['Passwort'];
+        	//ueberpruefung des Passworts
+    			if($user !== false && password_verify($password, $hash))
+    			{
+    				$_SESSION['userid'] = $user['ID'];
+    				$_SESSION['email'] = $user['Email'];
+    				$_SESSION['passwort'] = $user['Passwort'];
+    				$_SESSION['benutzername'] = $user['Nutzername'];
+    				$_SESSION['admin'] = $user['Admin'];
+    				$errorMessage = "Login erfolgreich!";
+    			}
+          else
           {
-            $_SESSION['userid'] = $user['ID'];
-            $_SESSION['email'] = $user['Email'];
-            $_SESSION['passwort'] = $user['Passwort'];
-            $_SESSION['benutzername'] = $user['Nutzername'];
-            $_SESSION['admin'] = $user['Admin'];
-            $errorMessage = "Login erfolgreich!";
-          } else {
-              $errorMessage = "E-Mail oder Passwort war ungültig<br>";
-          }
-        }
+    					$errorMessage = "E-Mail oder Passwort war ung�ltig<br>";
+    			}
+    		}
 
-        if(isset($_GET["registrieren"]))
-        {
-          $error = false;
-          $email = $_POST['email'];
-          $username = $_POST['username'];
-          $password = $_POST['password'];
-          if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-          {
-            $error = "Bitte eine gültige E-Mail-Adresse eingeben";
-          }
-          if(strlen($password) <= 7)
-          {
-            $error = "Passwort muss 7 zeichen lang sein";
-          }
-          if(!$error)
-          {
-          $statement = $pdo->prepare("SELECT * FROM users WHERE email = :email");
-          $result = $statement->execute(array('email' => $email));
-          $user = $statement->fetch();
-            if($user !== false)
+    		if(isset($_GET["registrieren"]))
+    		{
+    			$error = false;
+    			$email = $_POST['email'];
+    			$username = $_POST['username'];
+    			$password = $_POST['password'];
+    			if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+    			{
+    				$errorMessage = "Bitte eine g�ltige E-Mail-Adresse eingeben";
+    			}
+    			if(strlen($password) <= 7)
+    			{
+    				$errorMessage = "Passwort muss 7 zeichen lang sein";
+    			}
+    			if(!$error)
+    			{
+      			$statement = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+      			$result = $statement->execute(array('email' => $email));
+      			$user = $statement->fetch();
+    				if($user !== false)
+    				{
+    					$errorMessage = "Diese E-Mail-Adresse ist bereits vergeben";
+    				}
+    			}
+    			if(!$error)
+    			{
+    				$password_hash = password_hash($password, PASSWORD_DEFAULT);
+    				$admin = 0;
+    				$statement = $pdo->prepare("INSERT INTO Nutzer (Nutzername, Passwort, Email) VALUES (:username, :password, :email)");
+    				$result = $statement->execute(array('username' =>$username, 'password' => $password_hash, 'email' => $email));
+    				if($result)
             {
-              $errorMessage = "Diese E-Mail-Adresse ist bereits vergeben";
-            }
-          }
-          if(!$error)
-          {
-            $password_hash = password_hash($password, PASSWORD_DEFAULT);
-            $admin = 0;
-            $statement = $pdo->prepare("INSERT INTO Nutzer (Nutzername, Passwort, Email) VALUES (:username, :password, :email)");
-            $result = $statement->execute(array('username' =>$username, 'password' => $password_hash, 'email' => $email));
-            if($result) {
-              $_SESSION['email'] = $email;
-              $_SESSION['passwort'] = $password;
-              $_SESSION['benutzername'] = $username;
-              $_SESSION['admin'] = 0;
-              $showFormular = false;
-              //die(header ("LOCATION: Startseite.php"));
-            } else {
-              echo 'Beim Registrieren gab es einen Fehler';
-            }
-          }
-        }
-      ?>
+    					$_SESSION['email'] = $email;
+    					$_SESSION['passwort'] = $password;
+    					$_SESSION['benutzername'] = $username;
+    					$_SESSION['admin'] = 0;
+    					$showFormular = false;
+    					//die(header ("LOCATION: Startseite.php"));
+    				}
+            else
+            {
+    					echo 'Beim Registrieren gab es einen Fehler';
+    				}
+    			}
+    		}
+    	?>
+  </head>
 
-</head>
-  <?php include ("Startseite_Datenbankauslesen.php"); ?>
   <div id="ModalRegister" class="modal">
-
   <!-- Modal content -->
-  <div class="modal-content">
-		<div class="modal-header">
-		<span class="close">&times;</span>
-        <h2>Registrieren</h2>
-        <p>Bitte melden Sie sich mit ihren Daten an.</p>
-		</div>
-		<div class="modal-body">
+    <div class="modal-content">
+  		<div class="modal-header">
+  		    <span class="close">&times;</span>
+          <h2>Registrieren</h2>
+          <p>Bitte melden Sie sich mit ihren Daten an.</p>
+  		</div>
+  		<div class="modal-body">
         <form action="?registrieren=1" method="post">
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>E-Mail</label>
-                <input type="email" name="email" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Passwort</label>
-                <input type="password" name="password" class="form-control">
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Registrieren">
-            </div>
-			<div class="form-group">
-                <?php
-					if(isset($errorMessage)) {
-    					echo $errorMessage;
-					}
-				?>
-            </div>
-		</form>
-		</div>
-		<div class="modal-footer">
-            <p></p>
-		</div>
+          <div class="form-group">
+              <label>Username</label>
+              <input type="text" name="username" class="form-control">
+          </div>
+          <div class="form-group">
+              <label>E-Mail</label>
+              <input type="email" name="email" class="form-control">
+          </div>
+          <div class="form-group">
+              <label>Passwort</label>
+              <input type="password" name="password" class="form-control">
+          </div>
+          <div class="form-group">
+              <input type="submit" class="btn btn-primary" value="Registrieren">
+          </div>
+		      <div class="form-group">
+            <?php
+    					if(isset($errorMessage))
+              {
+        					echo $errorMessage;
+    					}
+  				  ?>
+          </div>
+  		  </form>
+  		</div>
+  		<div class="modal-footer">
+              <p></p>
+  		</div>
     </div>
-
 </div>
 
 <!-- The Modal -->
@@ -280,33 +137,34 @@
   <!-- Modal content -->
   <div class="modal-content">
 		<div class="modal-header">
-		<span class="close2">&times;</span>
-        <h2>Login</h2>
-        <p>Bitte melden Sie sich mit ihren Daten an.</p>
-		</div>
+  		<span class="close2">&times;</span>
+          <h2>Login</h2>
+          <p>Bitte melden Sie sich mit ihren Daten an.</p>
+  	</div>
 		<div class="modal-body">
-        <form action="?login=1" method="post">
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Passwort</label>
-                <input type="password" name="password" class="form-control">
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
-            </div>
-		</form>
+      <form action="?login=1" method="post">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Passwort</label>
+            <input type="password" name="password" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Login">
+        </div>
+		  </form>
 		</div>
 		<div class="modal-footer">
             <p></p>
 		</div>
-    </div>
-
+  </div>
 </div>
 
- <body id="span">
+
+
+ <body onload="DatenbankAuslesen()" id="span">
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="navbar-header">
           <span class="navbarText" href="#">M&M</span>
@@ -377,6 +235,7 @@
 
    <div class="container">
       <div class="row">
+
         <div class="col-md-3">
           <button class="btn d-md-none" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2"></button>
           <div class="row multi-collapse show" id="multiCollapseExample1">
@@ -392,7 +251,6 @@
         </div>
 
         <div class='col-md-6' id="table">
-
         </div>
 
         <div class="col-md-3">
@@ -403,13 +261,12 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
 
       <footer class="page-footer">
-
             col-md-12(Fu�zeile)
-
       </footer>
    <script src="../js/ControllStrart.js"></script>
 </body>
