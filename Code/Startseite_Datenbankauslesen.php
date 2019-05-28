@@ -42,7 +42,7 @@
 
 
   //Senden der Posts in forgegebener form an index zur ausgabe
-  function Textausgeben
+  function Textausgeben()
   {
     foreach ($post_array as $key => $kommentar)
     {
