@@ -8,6 +8,7 @@
   		<script src="../js/jquery-3.1.1.min.js"></script>
   		<script src="../js/bootstrap.min.js"></script>
       <?php include ("Startseite_Datenbankauslesen.php"); ?>
+      <?php include ("ControllKommentare.php"); ?>
 
 		  <?php
     		session_start();
@@ -164,7 +165,12 @@
 
 
 
- <body onload="DatenbankAuslesen()" id="span">
+ <body id="span">
+   <?php
+    DatenbankAuslesen()
+    ErmitelungDesKommentars();
+   ?>
+
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="navbar-header">
           <span class="navbarText" href="#">M&M</span>
@@ -271,27 +277,3 @@
    <script src="../js/ControllStrart.js"></script>
 </body>
 </html>
-
-<script>
-function DatenbankAuslesen()
-{
-	while(true)
-	{
-		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange = function()
-		{
-			if(this.readyState == 4 && this.status == 200)
-			{
-				Textausgeben();
-			}
-		};
-		xmlhttp.open("GET", "Startseite_Datenbankauslesen.php");
-		xmlhttp.send();
-		sleep(500);
-	}
-}
-
-function Sleep(milliseconds) {
-   return new Promise(resolve => setTimeout(resolve, milliseconds));
-}
-</script>

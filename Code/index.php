@@ -164,7 +164,13 @@
 
 
 
- <body onload="DatenbankAuslesen()" id="span">
+ <body id="span">
+   <?php
+    DatenbankAuslesen();
+   ?>
+
+
+
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="navbar-header">
           <span class="navbarText" href="#">M&M</span>
