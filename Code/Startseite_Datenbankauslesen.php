@@ -51,9 +51,9 @@
 
     foreach ($post_array as $key => $kommentar)
     {
-      var ueberschrift = "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=".$komentar."'> //Todo passender link einfügen
+      var ueberschrift = "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=".$komentar.getId()."'> //Todo passender link einfügen
                           <div class='col-md-12' id="komentar">
-                          <h1>" $komentar.getUeberschrift89"</h1>"
+                          <h1>" $komentar.getUeberschrift()"</h1>"
       var inhalt = $kommentar.getInhalt()"</div></a>"
 
       $("#table").append(ueberschrift, inhalt);
