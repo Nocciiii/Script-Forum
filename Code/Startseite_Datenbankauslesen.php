@@ -46,9 +46,15 @@
   {
     foreach ($post_array as $key => $kommentar)
     {
-      //ToDo ArrayElement pasend ausgeben
-      var ueberschrift = "<div class='col-md-12'><h1>" $komentar.getUeberschrift"</h1>"
-      var inhalt = $kommentar.getText"</div>"
+      $("#komentar").detach();
+    }
+
+    foreach ($post_array as $key => $kommentar)
+    {
+      var ueberschrift = "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=".$komentar."'> //Todo passender link einfügen
+                          <div class='col-md-12' id="komentar">
+                          <h1>" $komentar.getUeberschrift89"</h1>"
+      var inhalt = $kommentar.getInhalt()"</div></a>"
 
       $("#table").append(ueberschrift, inhalt);
     }
