@@ -38,37 +38,37 @@
       $post_array[]=$post;
     }
     usort($post_arraym, "cmp");
+	
+	catch(Exception $e)
+	{
+	   die("Errpr!:".$e->getMessage());
+	}
+
+	if(isset($_GET['logout']))
+	{
+	  session_destroy();
+	  header("Refresh:0; url=Startseite.php");
+	}
   }
 
 
   //Senden der Posts in forgegebener form an index zur ausgabe
   function Textausgeben()
   {
-    foreach ($post_array as $key => $kommentar)
+    foreach ($post_array as $key => $post)
     {
-      $("#komentar").detach();
+      $("#post").detach();
     }
 
-    foreach ($post_array as $key => $kommentar)
+    foreach ($post_array as $key => $post)
     {
-      var ueberschrift = "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=".$komentar."'> //Todo passender link einfügen
-                          <div class='col-md-12' id="komentar">
-                          <h1>" $komentar.getUeberschrift89"</h1>"
-      var inhalt = $kommentar.getInhalt()"</div></a>"
+      var ueberschrift = "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=".$post."'> //Todo passender link einfügen
+                          <div class='col-md-12' id="post">
+                          <h1>" $post.getUeberschrift()"</h1>"
+      var inhalt = $post.getInhalt()"</div></a>"
 
       $("#table").append(ueberschrift, inhalt);
     }
-  }
-
-  catch(Exception $e)
-  {
-	   die("Errpr!:".$e->getMessage());
-  }
-
-  if(isset($_GET['logout']))
-  {
-	  session_destroy();
-	  header("Refresh:0; url=Startseite.php");
   }
 
   function cmp($time1, $time2)
