@@ -62,24 +62,41 @@
 
     foreach ($post_array as $key => $post)
     {
-      //auslesen der Überschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
-      var ueberschrift = "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=".$post.getId()."'>
-        //Todo passender link einfügen!!!!!!!!!!!!!!!!!!!!!!
-                          <div class='col-md-12' id="komentar">
-                          <h1>" $post.getUeberschrift()"</h1>";
-      //auslesen des inhalts eines Posts
-      var inhalt = $post.getInhalt()"</div></a>";
-      var button = "<form action="postDelete($_SESSION['userid'], $post.getUeberschrift(), $post.getInhalt())">"
-                      "<input type="submit" value="Posten Deleten"></input>"
-                    "</form>";
+      if($_SESSION['Admin'] == true)
+      {
+        //auslesen der Überschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
+        var ueberschrift = "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=".$post.getId()."'>
+          //Todo passender link einfügen!!!!!!!!!!!!!!!!!!!!!!
+                            <div class='col-md-12' id="komentar">
+                            <h1>" $post.getUeberschrift()"</h1>";
+        //auslesen des inhalts eines Posts
+        var inhalt = $post.getInhalt()"</div></a>";
+        var button = "<form action="postDelete($_SESSION['userid'], $post.getUeberschrift(), $post.getInhalt())">"
+                        "<input type="submit" value="Posten Deleten"></input>"
+                      "</form>";
+
+        $("#table").append(ueberschrift, inhalt, button);
+      }
+      else
+      {
+        //auslesen der Überschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
+        var ueberschrift = "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=".$post.getId()."'>
+          //Todo passender link einfügen!!!!!!!!!!!!!!!!!!!!!!
+                            <div class='col-md-12' id="komentar">
+                            <h1>" $post.getUeberschrift()"</h1>";
+        //auslesen des inhalts eines Posts
+        var inhalt = $post.getInhalt()"</div></a>";
+
+        $("#table").append(ueberschrift, inhalt);
+      }
 
 //toDo Posts gewünscht sotieren
       var uebershriftr = "<div class="col col-md-12">"$post.getUeberschrift()"</div>"
 
 //toDo selbes wie obendrüber
       var uebershriftl = "<div class="col col-md-12">"$post.getUeberschrift()"</div>"
+
       //Ausgabe der Überschrift und des Inhalts auf der Seite
-      $("#table").append(ueberschrift, inhalt, button);
       $("#multiCollapseExample1").append(ueberschriftr);
       $("#multiCollapseExample2").append(ueberschriftr);
       $("#Collapsright").append(ueberschriftl);
