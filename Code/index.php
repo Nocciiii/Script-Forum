@@ -92,6 +92,14 @@
     				}
     			}
     		}
+
+        if(isset ($_Get["Post"]))
+        {
+          $email = $_POST['email'];
+    			$username = $_POST['username'];
+
+          posten
+        }
     	?>
   </head>
 
@@ -167,7 +175,72 @@
   </div>
 </div>
 
+<div id="ModalRegister" class="modal">
+<!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Registrieren</h2>
+        <p>Bitte melden Sie sich mit ihren Daten an.</p>
+    </div>
+    <div class="modal-body">
+      <form action="?registrieren=1" method="post">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>E-Mail</label>
+            <input type="email" name="email" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Passwort</label>
+            <input type="password" name="password" class="form-control">
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Registrieren">
+        </div>
+        <div class="form-group">
+          <?php
+            if(isset($errorMessage))
+            {
+                echo $errorMessage;
+            }
+          ?>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+            <p></p>
+    </div>
+  </div>
+</div>
 
+<!-- The Modal -->
+<div id="ModelPost" class="modal">
+
+<!-- Modal content -->
+<div class="modal-content">
+  <div class="modal-header">
+        <h2>Post</h2>
+  </div>
+  <div class="modal-body">
+    <form action="?Post=1" method="post">
+      <div class="form-group">
+          <label>Ueberschrift</label>
+          <input type="text" name="ueberschrift" class="form-control">
+      </div>
+      <div class="form-group">
+          <label>Inhalt</label>
+          <input type="text" name="inhalt" class="form-control">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+          <p></p>
+  </div>
+</div>
+</div>
 
  <body id="span">
    <?php
@@ -185,6 +258,8 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav ml-auto">
+            <li>
+              	<input type="button" id="btnPost" value="Post werstellen" class="login"/>
             <li>
               <form action="logout.php" method="post">
         				<?php

@@ -63,15 +63,18 @@
     foreach ($post_array as $key => $post)
     {
       //auslesen der Überschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
-      var ueberschrift = "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=".$komentar.getId()."'>
+      var ueberschrift = "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=".$post.getId()."'>
         //Todo passender link einfügen!!!!!!!!!!!!!!!!!!!!!!
                           <div class='col-md-12' id="komentar">
-                          <h1>" $komentar.getUeberschrift()"</h1>"
+                          <h1>" $post.getUeberschrift()"</h1>";
       //auslesen des inhalts eines Posts
-      var inhalt = $kommentar.getInhalt()"</div></a>"
+      var inhalt = $post.getInhalt()"</div></a>";
+      var button = "<form action="postDelete($_SESSION['userid'], $post.getUeberschrift(), $post.getInhalt())">"
+                      "<input type="submit" value="Posten Deleten"></input>"
+                    "</form>";
 
       //Ausgabe der Überschrift und des Inhalts auf der Seite
-      $("#table").append(ueberschrift, inhalt);
+      $("#table").append(ueberschrift, inhalt, button);
     }
   }
 

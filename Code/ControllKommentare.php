@@ -34,13 +34,19 @@ include ("PostDeleteAdmin");
     echo "<div class='col-md-12'><h1>"
     echo $post.getUeberschrift() "</h1>"
     echo $post.getInhalt()
+    echo "<form action="kommentarPosten($_SESSION['userid'], Kommentar.getText(), $post.getid())">"
+    echo  "<input type="text" name="Kommentar"></input>"
+    echo  "<input type="submit" value="Posten"></input>"
+    echo "</form>"
 
     foreach ($kommentar_array as $key => $komentar)
     {
       if($_SESSION['Admin'] == true)
       {
         echo $komentar.gettext();
-        echo "<button onclick="postDelete($_SESSION['userid'], $post.getUeberschrift(), $post.getText()"></button>")
+        echo "<form action="kommentarDelete($_SESSION['userid'], $komentar.getText(), $post.getId()">
+                <input type="subimt" value="Delete"></input>
+              </form>");
       }
       else
       {

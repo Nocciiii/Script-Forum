@@ -2,10 +2,12 @@
 // Alle Modale bekommen
 var modalRegister = document.getElementById('ModalRegister');
 var modalLogin = document.getElementById('ModalLogin');
+var modelPost = document.getElementById('ModelPost');
 
 // Beide Button für jeweils beide Modale
 var btnRegister = document.getElementById("btnRegister");
 var btnLogin = document.getElementById("btnLogin");
+var btnPost = document.getElementById("btPost")
 
 // Hier bekommt man das <span> element welches zum Schließen der Modale da ist
 var span = document.getElementsByClassName("close")[0];
@@ -20,6 +22,11 @@ btnRegister.onclick = function()
 btnLogin.onclick = function()
 {
   modalLogin.style.display = "block";
+}
+
+btnPost.onclick = function()
+{
+  modelPost.style.display = "block";
 }
 
 // "schließt" beide modale wenn man auf das X klickt
@@ -43,5 +50,9 @@ window.onclick = function(event)
   else if(event.target == modalRegister)
   {
     modalRegister.style.display = "none";
+  }
+  else if(event.target == modelPost)
+  {
+    modelPost.style.display = "none";
   }
 }

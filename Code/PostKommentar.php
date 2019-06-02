@@ -9,7 +9,7 @@
   		<script src="../js/bootstrap.min.js"></script>
       <?php include ("Startseite_Datenbankauslesen.php"); ?>
       <?php include ("ControllKommentare.php"); ?>
-      <?php include ("PostDeleteAdmin"); ?>
+      <?php include ("PostDeleteAdmin");
 
 		  <?php
     		session_start();
