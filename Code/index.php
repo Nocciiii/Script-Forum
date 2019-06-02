@@ -76,7 +76,7 @@
     				$admin = 0;
     				$statement = $pdo->prepare("INSERT INTO Nutzer (Nutzername, Passwort, Email) VALUES (:username, :password, :email)");
     				$result = $statement->execute(array('username' =>$username, 'password' => $password_hash, 'email' => $email));
-            
+
     				if($result)
             {
     					$_SESSION['email'] = $email;
@@ -184,17 +184,6 @@
           </button>
         </div>
         <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav">
-             <li class="nav-item">
-                 <a class="nav-link" href="#">Startseite</a>
-             </li>
-             <li class="nav-item">
-                 <a class="nav-link" href="#">�ber mich</a>
-             </li>
-             <li class="nav-item">
-                 <a class="nav-link" href="#">Kontakt</a>
-             </li>
-          </ul>
           <ul class="navbar-nav ml-auto">
             <li>
               <form action="logout.php" method="post">

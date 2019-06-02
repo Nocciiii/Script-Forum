@@ -180,17 +180,6 @@
           </button>
         </div>
         <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav">
-             <li class="nav-item">
-                 <a class="nav-link" href="#">Startseite</a>
-             </li>
-             <li class="nav-item">
-                 <a class="nav-link" href="#">�ber mich</a>
-             </li>
-             <li class="nav-item">
-                 <a class="nav-link" href="#">Kontakt</a>
-             </li>
-          </ul>
           <ul class="navbar-nav ml-auto">
             <li>
               <form action="logout.php" method="post">
