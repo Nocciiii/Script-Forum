@@ -314,14 +314,8 @@
         <div class="col-md-3">
           <button class="btn d-md-none" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2"></button>
           <div class="row multi-collapse show" id="multiCollapseExample1">
-            <div class="col col-md-12">
-              col-md-3(Sidbar right top)
-            </div>
           </div>
           <div class="row multi-collapse show" id="multiCollapseExample2">
-            <div class="col col-md-12">
-              col-md-3(Sidbar right botom)
-            </div>
           </div>
         </div>
 

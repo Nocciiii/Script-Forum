@@ -73,8 +73,16 @@
                       "<input type="submit" value="Posten Deleten"></input>"
                     "</form>";
 
+//toDo Posts gewünscht sotieren
+      var uebershriftr = "<div class="col col-md-12">"$post.getUeberschrift()"</div>"
+
+//toDo selbes wie obendrüber
+      var uebershriftl = "<div class="col col-md-12">"$post.getUeberschrift()"</div>"
       //Ausgabe der Überschrift und des Inhalts auf der Seite
       $("#table").append(ueberschrift, inhalt, button);
+      $("#multiCollapseExample1").append(ueberschriftr);
+      $("#multiCollapseExample2").append(ueberschriftr);
+      $("#Collapsright").append(ueberschriftl);
     }
   }
 
