@@ -1,5 +1,6 @@
 <?php
 include ("PostDeleteAdmin");
+include ("Posten.php");
 
     $post;
     if(isset($_GET['post'])) //Checks if "Post" is in the URL parameters
@@ -34,8 +35,8 @@ include ("PostDeleteAdmin");
     echo "<div class='col-md-12'><h1>"
     echo $post.getUeberschrift() "</h1>"
     echo $post.getInhalt()
-    echo "<form action="kommentarPosten($_SESSION['userid'], Kommentar.getText(), $post.getid())">"
-    echo  "<input type="text" name="Kommentar"></input>"
+    echo "<form action="ControllKommentare.php" method="post">"
+    echo  "  <input type="text" name="inhalt"></input>"
     echo  "<input type="submit" value="Posten"></input>"
     echo "</form>"
 
@@ -55,5 +56,12 @@ include ("PostDeleteAdmin");
 
     }
     echo "</div>"
+  }
+
+  if(isset ($_Get["Post"]))
+  {
+    $inhalt = $_POST['inhalt'];
+
+    kommentarPosten($_SESSION['userid'], $inhalt, $Post.getId());
   }
 ?>

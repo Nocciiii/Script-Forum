@@ -8,6 +8,7 @@
   		<script src="../js/jquery-3.1.1.min.js"></script>
   		<script src="../js/bootstrap.min.js"></script>
       <?php include ("Startseite_Datenbankauslesen.php"); ?>
+      <?php include ("Posten.php"); ?>
 
 		  <?php
     		session_start();
@@ -95,10 +96,10 @@
 
         if(isset ($_Get["Post"]))
         {
-          $email = $_POST['email'];
-    			$username = $_POST['username'];
+          $ueberschrift = $_POST['ueberschrift'];
+    			$inhalt = $_POST['inhalt'];
 
-          posten
+          posten($_SESSION['userid'], $ueberschrift, $inhalt);
         }
     	?>
   </head>

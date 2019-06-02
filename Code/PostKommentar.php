@@ -168,8 +168,11 @@
 
  <body id="span">
    <?php
-    DatenbankAuslesen()
-    ErmitelungDesKommentars();
+   while(true)
+   {
+         ErmitelungDesKommentars();
+         sleep(5);
+   }
    ?>
 
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
