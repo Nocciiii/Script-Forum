@@ -11,11 +11,11 @@
   {
     $pdo = new PDO ($server, $user,'',$options);
     global $post_array;
-	$post_array=array();
+	  $post_array=array();
     foreach($pdo->query('SELECT * from post') as $row)
     {
       $post = new Post();
-	  $post->setId($row[0]);
+	    $post->setId($row[0]);
       $post->setUeberschrift($row[1]);
       $post->setInhalt($row[2]);
       $post->setVeroeffentlichung($row[3]);
@@ -38,7 +38,7 @@
       $post_array[]=$post;
     }
     usort($post_arraym, "cmp");
-	
+
 	catch(Exception $e)
 	{
 	   die("Errpr!:".$e->getMessage());
@@ -57,23 +57,20 @@
   {
     foreach ($post_array as $key => $post)
     {
-      $("#post").detach();
+      $("#komentar").detach();
     }
 
     foreach ($post_array as $key => $post)
     {
-<<<<<<< HEAD
-      var ueberschrift = "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=".$komentar.getId()."'> //Todo passender link einfügen
+      //auslesen der Überschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
+      var ueberschrift = "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=".$komentar.getId()."'>
+        //Todo passender link einfügen!!!!!!!!!!!!!!!!!!!!!!
                           <div class='col-md-12' id="komentar">
                           <h1>" $komentar.getUeberschrift()"</h1>"
+      //auslesen des inhalts eines Posts
       var inhalt = $kommentar.getInhalt()"</div></a>"
-=======
-      var ueberschrift = "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=".$post."'> //Todo passender link einfügen
-                          <div class='col-md-12' id="post">
-                          <h1>" $post.getUeberschrift()"</h1>"
-      var inhalt = $post.getInhalt()"</div></a>"
->>>>>>> ad7958cf43a342760ac2f6d057789ed9b0cd1e52
 
+      //Ausgabe der Überschrift und des Inhalts auf der Seite
       $("#table").append(ueberschrift, inhalt);
     }
   }

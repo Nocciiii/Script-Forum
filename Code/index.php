@@ -48,19 +48,23 @@
     			$email = $_POST['email'];
     			$username = $_POST['username'];
     			$password = $_POST['password'];
+
     			if(!filter_var($email, FILTER_VALIDATE_EMAIL))
     			{
     				$errorMessage = "Bitte eine g�ltige E-Mail-Adresse eingeben";
     			}
+
     			if(strlen($password) <= 7)
     			{
     				$errorMessage = "Passwort muss 7 zeichen lang sein";
     			}
+
     			if(!$error)
     			{
       			$statement = $pdo->prepare("SELECT * FROM users WHERE email = :email");
       			$result = $statement->execute(array('email' => $email));
       			$user = $statement->fetch();
+
     				if($user !== false)
     				{
     					$errorMessage = "Diese E-Mail-Adresse ist bereits vergeben";
@@ -72,6 +76,7 @@
     				$admin = 0;
     				$statement = $pdo->prepare("INSERT INTO Nutzer (Nutzername, Passwort, Email) VALUES (:username, :password, :email)");
     				$result = $statement->execute(array('username' =>$username, 'password' => $password_hash, 'email' => $email));
+            
     				if($result)
             {
     					$_SESSION['email'] = $email;
