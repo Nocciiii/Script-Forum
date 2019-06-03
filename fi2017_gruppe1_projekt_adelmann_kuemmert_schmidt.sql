@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 21. Mai 2019 um 10:54
+-- Erstellungszeit: 03. Jun 2019 um 10:08
 -- Server-Version: 10.1.32-MariaDB
 -- PHP-Version: 7.2.5
 
@@ -21,39 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Datenbank: `fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt`
 --
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `bild`
---
-
-CREATE TABLE `bild` (
-  `ID` int(5) NOT NULL,
-  `Bild` varchar(50) COLLATE latin1_german1_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_german1_ci;
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `bild_kommentar`
---
-
-CREATE TABLE `bild_kommentar` (
-  `BildID` int(5) DEFAULT NULL,
-  `KommentarID` int(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_german1_ci;
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `bild_post`
---
-
-CREATE TABLE `bild_post` (
-  `BildID` int(5) DEFAULT NULL,
-  `PostID` int(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_german1_ci;
 
 -- --------------------------------------------------------
 
@@ -87,7 +54,8 @@ CREATE TABLE `nutzer` (
 
 INSERT INTO `nutzer` (`ID`, `Nutzername`, `Passwort`, `Email`, `Admin`) VALUES
 (1, 'Padoru', '$2y$10$IFk0eA4Ax3iYJRRpDrMmK.I/T.dbe49Ki6o0h3ior/9J/NZH0PDlq', 'Umu@Nero.com', 1),
-(2, 'TheAllMightyPotatoBeing', '$2y$10$Z7YRmIZblEK47zM3WSCiZuGMdCikllRu7YnwTtGlCP2OwSeJhRiOW', 'praise@potato.com', 1);
+(2, 'TheAllMightyPotatoBeing', '$2y$10$Z7YRmIZblEK47zM3WSCiZuGMdCikllRu7YnwTtGlCP2OwSeJhRiOW', 'praise@potato.com', 1),
+(3, 'CodeVein', '$2y$10$LPZhrtli1Ps87OpMEO.mL.N7WbSA5AiKj5Q/Iur3IqY5nZBHv4.gm', 'Code@Vein.com', 1);
 
 -- --------------------------------------------------------
 
@@ -140,12 +108,6 @@ CREATE TABLE `post_kommentar` (
 --
 
 --
--- Indizes für die Tabelle `bild`
---
-ALTER TABLE `bild`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- Indizes für die Tabelle `kommentar`
 --
 ALTER TABLE `kommentar`
@@ -168,12 +130,6 @@ ALTER TABLE `post`
 --
 -- AUTO_INCREMENT für exportierte Tabellen
 --
-
---
--- AUTO_INCREMENT für Tabelle `bild`
---
-ALTER TABLE `bild`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT für Tabelle `kommentar`
