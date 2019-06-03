@@ -11,7 +11,10 @@
       <?php include ("Posten.php"); ?>
 
 		  <?php
-    		session_start();
+			if(session_id() == '' || !isset($_SESSION)) {
+    // session isn't started
+    session_start();
+}
     		$server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt;
     		host=localhost';
 
@@ -244,9 +247,9 @@
 </div>
 
  <body id="span">
-   <?php
+   <script>
     DatenbankAuslesen();
-   ?>
+   </script>
 
 
 

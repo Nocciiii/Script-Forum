@@ -1,8 +1,11 @@
 <?php
- session_start();
+	if(session_id() == '' || !isset($_SESSION)) {
+    // session isn't started
+    session_start();
+}
   include("klassen.php");
 
-  $server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt ;
+  $server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt;
   host=localhost';
   $user='fi11';
   $options =array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
@@ -25,30 +28,30 @@
           FROM kommentar k
           JOIN kommentar_post kp
           ON k.ID = kp.KommentarID
-          AND kp.PostID='$row[0])
+          AND kp.PostID='.$row[0]) as $row2)
       {
-        $kommentar= new Kommentar();
-        $kommentar->setId($row[0]);
-        $kommentar->setText($row[1]);
-        $kommentar->setVeroeffentlichung($row[0]);
+        $kommentar = new Kommentar();
+        $kommentar->setId($row2[0]);
+        $kommentar->setText($row2[1]);
+        $kommentar->setVeroeffentlichung($row2[2]);
         $kommentar_array[]=$kommentar;
         $post->setKommentaranzahl($post->getKommentaranzahl()+1);
       }
       $post->setKommentare($kommentar_array);
       $post_array[]=$post;
     }
-    usort($post_arraym, "cmp");
+    usort($post_array, "cmp");
 
-	catch(Exception $e)
-	{
-	   die("Errpr!:".$e->getMessage());
-	}
 
 	if(isset($_GET['logout']))
 	{
 	  session_destroy();
 	  header("Refresh:0; url=Startseite.php");
 	}
+  }
+  catch(Exception $e)
+  {
+	   die("Errpr!:".$e->getMessage());
   }
 
 
@@ -57,13 +60,19 @@
   {
     foreach ($post_array as $key => $post)
     {
+	?>
+	 <script>
       $("#komentar").detach();
+	 </script>
+	 <?php
     }
 
     foreach ($post_array as $key => $post)
     {
       if($_SESSION['Admin'] == true)
       {
+		?>
+		<script>
         //auslesen der Überschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
         var ueberschrift = "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=".$post.getId()."'>
           //Todo passender link einfügen!!!!!!!!!!!!!!!!!!!!!!
@@ -76,9 +85,13 @@
                       "</form>";
 
         $("#table").append(ueberschrift, inhalt, button);
+		</script>
+		<?php
       }
       else
       {
+		?>
+		<script>
         //auslesen der Überschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
         var ueberschrift = "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=".$post.getId()."'>
           //Todo passender link einfügen!!!!!!!!!!!!!!!!!!!!!!
@@ -88,8 +101,11 @@
         var inhalt = $post.getInhalt()"</div></a>";
 
         $("#table").append(ueberschrift, inhalt);
+		</script>
+		<?php
       }
-
+		?>
+		<script>
 //toDo Posts gewünscht sotieren
       var uebershriftr = "<div class="col col-md-12">"$post.getUeberschrift()"</div>"
 
@@ -100,6 +116,8 @@
       $("#multiCollapseExample1").append(ueberschriftr);
       $("#multiCollapseExample2").append(ueberschriftr);
       $("#Collapsright").append(ueberschriftl);
+	  </script>
+	  <?php
     }
   }
 
