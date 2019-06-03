@@ -3,13 +3,12 @@ function posten($nutzerID, $Ueberschrift, $Text)
 {
 	$server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt;
 	host=localhost';
-	$user='fi11';
+	$user='root';
 	$options =array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
 	$pdo = new PDO ($server, $user,'',$options);
-	
-	$date=new DateTime;
+	$date=new DateTime('now');
 	$Veroeffentlichung = $date->format('Y-m-d H:i:s');
-	
+
 	$pdo->query("INSERT INTO
         post
         (Ueberschrift,Inhalt,Veroeffentlichung)
@@ -41,7 +40,7 @@ function kommentarPosten($nutzerID, $Text, $postID)
 	$user='fi11';
 	$options =array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
 	$pdo = new PDO ($server, $user,'',$options);
-	
+
 	$Veroeffentlichung=new DateTime;
 	$pdo->query("INSERT INTO
         kommentar

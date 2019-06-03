@@ -7,7 +7,7 @@
 
   $server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt;
   host=localhost';
-  $user='fi11';
+  $user='root';
   $options =array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
 
   try
@@ -22,13 +22,14 @@
       $post->setUeberschrift($row[1]);
       $post->setInhalt($row[2]);
       $post->setVeroeffentlichung($row[3]);
+			$post->setVeroeffentlichung(date_create_from_format('Y-m-d H:i:s',$post->getVeroeffentlichung()));
       $kommentar_array=array();
       $post->setKommentaranzahl(0);
       foreach($pdo->query('SELECT *
           FROM kommentar k
-          JOIN kommentar_post kp
-          ON k.ID = kp.KommentarID
-          AND kp.PostID='.$post->getId()) as $row2)
+          JOIN post_kommentar pk
+          ON k.ID =pk.KommentarID
+          AND pk.PostID='.$post->getId()) as $row2)
       {
         $kommentar = new Kommentar();
         $kommentar->setId($row2[0]);

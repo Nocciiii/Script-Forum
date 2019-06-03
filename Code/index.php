@@ -24,25 +24,25 @@
 			};
 			xmlhttp.open("GET", "Startseite_Datenbankauslesen.php");
 			xmlhttp.send();
-			
-		
+
+
 		}
 	</script>
-	  
-	  
+
+
 	<?php
-			if(session_id() == '' || !isset($_SESSION)) 
+			if(session_id() == '' || !isset($_SESSION))
 			{
 				// session isn't started
 				session_start();
 			}
-			
+
     		$server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt;
     		host=localhost';
 
     		//Wechsel zwischen User wenn daheim lol
-    		$user='fi11';
-    		//$user='root';
+    		//$user='fi11';
+    		$user='root';
 
     		$pdo = new PDO ($server, $user,'');
     		if(isset($_GET['login']))
@@ -109,7 +109,7 @@
     					$errorMessage = "Diese E-Mail-Adresse ist bereits vergeben";
     				}
     			}
-				
+
     			if(!$error)
     			{
     				$password_hash = password_hash($password, PASSWORD_DEFAULT);
@@ -143,8 +143,8 @@
 			  $ueberschrift = $_POST['ueberschrift'];
 			  $inhalt = $_POST['inhalt'];
 
-				
-			  
+
+
 			  posten($_SESSION['userid'], $ueberschrift, $inhalt);
 			}
     	?>
@@ -255,7 +255,7 @@
 		<div class="form-group">
             <?php
 				if(isset($errorMessage))
-				{	
+				{
         			echo $errorMessage;
     			}
   			?>
