@@ -7,7 +7,7 @@ var modelPost = document.getElementById('ModelPost');
 // Beide Button für jeweils beide Modale
 var btnRegister = document.getElementById("btnRegister");
 var btnLogin = document.getElementById("btnLogin");
-var btnPost = document.getElementById("btPost")
+var btnPost = document.getElementById("btPost");
 
 // Hier bekommt man das <span> element welches zum Schließen der Modale da ist
 var span = document.getElementsByClassName("close")[0];

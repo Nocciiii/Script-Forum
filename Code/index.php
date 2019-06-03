@@ -21,7 +21,7 @@
     		//Wechsel zwischen User wenn daheim lol
     		$user='fi11';
     		//$user='root';
-			
+
     		$pdo = new PDO ($server, $user,'');
     		if(isset($_GET['login']))
     		{
@@ -43,7 +43,7 @@
 					?>
 					<script>//window.location.reload()</script>
 					<?php
-					
+
     			}
           else
           {
@@ -108,12 +108,12 @@
     				}
     			}
     		}
-			
-			if(isset($_GET['logout']))
-    		{
-				session_destroy();
-				session_start();
-			}
+
+    		if(isset($_GET['logout']))
+      		{
+    			session_destroy();
+    			session_start();
+    		}
 
         if(isset ($_Get["Post"]))
         {
@@ -251,7 +251,6 @@
             <li>
               	<input type="button" id="btnPost" value="Post erstellen" class="login"/>
             <li>
-              
         				<?php
         					if(!isset($_SESSION['benutzername']))
         					{
@@ -270,8 +269,8 @@
         						<?php
         					}
         				?>
-        			
-        			
+
+
             </li>
          </ul>
         </div>
