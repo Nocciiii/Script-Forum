@@ -23,3 +23,5 @@ UmU Paradise
 
     Truck-kun: Das Isekai Diskussionsform!
 <br>
+
+    Bei Code Vein Bild: "Gid Good, das Code Vein Forum"
