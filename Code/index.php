@@ -316,7 +316,7 @@
    <div class="container">
       <div class="row">
 
-        <div class="col-md-3">
+        <div class="col-md-3 d-md-block">
           <button class="btn d-md-none" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2"></button>
           <div class="row multi-collapse show" id="multiCollapseExample1">
           </div>

@@ -3,6 +3,15 @@ body
   background-color: #1a1a1a;
 }
 
+
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+
 ./* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -92,7 +101,7 @@ body
   color: lightgray;
 }
 
-.login :hover
+.login:hover
 {
   background-color: rgba(255, 255, 255, 0.1);;
   color: white !important;
@@ -123,17 +132,8 @@ body
 
 .col-md-12
 {
-
   height: auto;
   min-height: 300px;
-  background-color: black;
-  border: 3px solid #2a2b2d;
-}
-
-.col-md-12 right
-{
-  height: auto;
-  min-height: 600px;
   background-color: black;
   border: 3px solid #2a2b2d;
 }
@@ -173,7 +173,17 @@ body
   align-items: center;
 }
 
-a:hover
+.d-md-none
+{
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #2a2b2d;
+  border-radius: 4px;
+  background-color: darkgray;
+  color: lightgray;
+}
+
+.d-md-none:hover
 {
   background-color: rgba(255, 255, 255, 0.1);;
   color: white !important;
