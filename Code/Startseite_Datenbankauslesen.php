@@ -43,11 +43,7 @@
     usort($post_array, "cmp");
 
 
-	if(isset($_GET['logout']))
-	{
-	  session_destroy();
-	  header("Refresh:0; url=Startseite.php");
-	}
+
   }
   catch(Exception $e)
   {

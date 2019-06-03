@@ -20,14 +20,15 @@
 
     		//Wechsel zwischen User wenn daheim lol
     		$user='fi11';
-
     		//$user='root';
+			
     		$pdo = new PDO ($server, $user,'');
     		if(isset($_GET['login']))
     		{
     			$username = $_POST['username'];
     			$password = $_POST['password'];
     			$statement = $pdo->prepare("SELECT * FROM Nutzer WHERE Nutzername = :username OR Email = :username");
+				$result = $statement->execute(array('username' =>$username, 'email' => $username));
     			$user = $statement->fetch();
     			$hash = $user['Passwort'];
         	//ueberpruefung des Passworts
@@ -38,11 +39,23 @@
     				$_SESSION['passwort'] = $user['Passwort'];
     				$_SESSION['benutzername'] = $user['Nutzername'];
     				$_SESSION['admin'] = $user['Admin'];
-    				$errorMessage = "Login erfolgreich!";
+    				$errorMessage = $user['Admin'];
+					?>
+					<script>//window.location.reload()</script>
+					<?php
+					
     			}
           else
           {
-    					$errorMessage = "E-Mail oder Passwort war ung�ltig<br>";
+    					//$errorMessage = "E-Mail oder Passwort war ung�ltig<br>";
+						if(isset($user['Nutzername']))
+						{
+						$errorMessage = $user['Nutzername'];
+						}
+						else
+						{
+							$errorMessage = "Kein Nutzer vorhanden";
+						}
     			}
     		}
 
@@ -88,7 +101,6 @@
     					$_SESSION['benutzername'] = $username;
     					$_SESSION['admin'] = 0;
     					$showFormular = false;
-    					//die(header ("LOCATION: Startseite.php"));
     				}
             else
             {
@@ -96,6 +108,12 @@
     				}
     			}
     		}
+			
+			if(isset($_GET['logout']))
+    		{
+				session_destroy();
+				session_start();
+			}
 
         if(isset ($_Get["Post"]))
         {
@@ -171,6 +189,14 @@
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Login">
         </div>
+		<div class="form-group">
+            <?php
+    					if(isset($errorMessage))
+              {
+        					echo $errorMessage;
+    					}
+  				  ?>
+          </div>
 		  </form>
 		</div>
 		<div class="modal-footer">
@@ -179,46 +205,6 @@
   </div>
 </div>
 
-<div id="ModalRegister" class="modal">
-<!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-        <span class="close">&times;</span>
-        <h2>Registrieren</h2>
-        <p>Bitte melden Sie sich mit ihren Daten an.</p>
-    </div>
-    <div class="modal-body">
-      <form action="?registrieren=1" method="post">
-        <div class="form-group">
-            <label>Username</label>
-            <input type="text" name="username" class="form-control">
-        </div>
-        <div class="form-group">
-            <label>E-Mail</label>
-            <input type="email" name="email" class="form-control">
-        </div>
-        <div class="form-group">
-            <label>Passwort</label>
-            <input type="password" name="password" class="form-control">
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Registrieren">
-        </div>
-        <div class="form-group">
-          <?php
-            if(isset($errorMessage))
-            {
-                echo $errorMessage;
-            }
-          ?>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-            <p></p>
-    </div>
-  </div>
-</div>
 
 <!-- The Modal -->
 <div id="ModelPost" class="modal">
@@ -263,11 +249,11 @@
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav ml-auto">
             <li>
-              	<input type="button" id="btnPost" value="Post werstellen" class="login"/>
+              	<input type="button" id="btnPost" value="Post erstellen" class="login"/>
             <li>
-              <form action="logout.php" method="post">
+              
         				<?php
-        					if(!isset($_SESSION['login']))
+        					if(!isset($_SESSION['benutzername']))
         					{
         						?>
         							<input type="button" id="btnLogin" value="Login" class="login"/>
@@ -277,12 +263,15 @@
         					else
         					{
         						?>
-        							<span>Sie sind angemeldet als <?= $_SESSION['login']['username'];?></span>
+								<form action="?logout=1" method="post">
+        							<span>Sie sind angemeldet als <?= $_SESSION['admin'];?></span>
         							<input type="submit" value="Logout" class="login"/>
+								</form>
         						<?php
         					}
         				?>
-        			</form>
+        			
+        			
             </li>
          </ul>
         </div>
