@@ -232,11 +232,7 @@
 </div>
 </div>
 
- <body id="span">
-   <script>
-    DatenbankAuslesen();
-   </script>
-
+ <body id="span" onload="DatenbankAuslesen()">
 
 
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -331,28 +327,29 @@
       </footer>
    <script src="../js/ControllStrart.js"></script>
 </body>
-</html>
 
 <script>
-function DatenbankAuslesen()
-{
-	while(true)
-	{
-		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange = function()
-		{
-			if(this.readyState == 4 && this.status == 200)
-			{
-				Textausgeben();
-			}
-		};
-		xmlhttp.open("GET", "Startseite_Datenbankauslesen.php");
-		xmlhttp.send();
-		sleep(500);
-	}
-}
+  function DatenbankAuslesen()
+  {
+  	while(true)
+  	{
+  		var xmlhttp = new XMLHttpRequest();
+  		xmlhttp.onreadystatechange = function()
+  		{
+  			if(this.readyState == 4 && this.status == 200)
+  			{
+  				Textausgeben();
+  			}
+  		};
+  		xmlhttp.open("GET", "Startseite_Datenbankauslesen.php");
+  		xmlhttp.send();
+  		sleep(500);
+  	}
+  }
 
-function Sleep(milliseconds) {
-   return new Promise(resolve => setTimeout(resolve, milliseconds));
-}
+  function Sleep(milliseconds) {
+     return new Promise(resolve => setTimeout(resolve, milliseconds));
+  }
 </script>
+
+</html>
