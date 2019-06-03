@@ -4,57 +4,59 @@
     session_start();
 }
   include("klassen.php");
+function Auslesen()
+{
+	  $server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt;
+	  host=localhost';
+	  $user='root';
+	  $options =array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
 
-  $server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt;
-  host=localhost';
-  $user='root';
-  $options =array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
-
-  try
-  {
-    $pdo = new PDO ($server, $user,'',$options);
-    global $post_array;
-	  $post_array=array();
-    foreach($pdo->query('SELECT * from post') as $row)
-    {
-      $post = new Post();
-	    $post->setId($row[0]);
-      $post->setUeberschrift($row[1]);
-      $post->setInhalt($row[2]);
-      $post->setVeroeffentlichung($row[3]);
-			$post->setVeroeffentlichung(date_create_from_format('Y-m-d H:i:s',$post->getVeroeffentlichung()));
-      $kommentar_array=array();
-      $post->setKommentaranzahl(0);
-      foreach($pdo->query('SELECT *
-          FROM kommentar k
-          JOIN post_kommentar pk
-          ON k.ID =pk.KommentarID
-          AND pk.PostID='.$post->getId()) as $row2)
-      {
-        $kommentar = new Kommentar();
-        $kommentar->setId($row2[0]);
-        $kommentar->setText($row2[1]);
-        $kommentar->setVeroeffentlichung($row2[2]);
-        $kommentar_array[]=$kommentar;
-        $post->setKommentaranzahl($post->getKommentaranzahl()+1);
-      }
-      $post->setKommentare($kommentar_array);
-      $post_array[]=$post;
-    }
-    usort($post_array, "cmp");
+	  try
+	  {
+	    $pdo = new PDO ($server, $user,'',$options);
+	    global $post_array;
+		  $post_array=array();
+	    foreach($pdo->query('SELECT * from post') as $row)
+	    {
+	      $post = new Post();
+		    $post->setId($row[0]);
+	      $post->setUeberschrift($row[1]);
+	      $post->setInhalt($row[2]);
+	      $post->setVeroeffentlichung($row[3]);
+				$post->setVeroeffentlichung(date_create_from_format('Y-m-d H:i:s',$post->getVeroeffentlichung()));
+	      $kommentar_array=array();
+	      $post->setKommentaranzahl(0);
+	      foreach($pdo->query('SELECT *
+	          FROM kommentar k
+	          JOIN post_kommentar pk
+	          ON k.ID =pk.KommentarID
+	          AND pk.PostID='.$post->getId()) as $row2)
+	      {
+	        $kommentar = new Kommentar();
+	        $kommentar->setId($row2[0]);
+	        $kommentar->setText($row2[1]);
+	        $kommentar->setVeroeffentlichung($row2[2]);
+	        $kommentar_array[]=$kommentar;
+	        $post->setKommentaranzahl($post->getKommentaranzahl()+1);
+	      }
+	      $post->setKommentare($kommentar_array);
+	      $post_array[]=$post;
+	    }
+	    usort($post_array, "cmp");
 
 
 
-  }
-  catch(Exception $e)
-  {
-	   die("Errpr!:".$e->getMessage());
-  }
-
+	  }
+	  catch(Exception $e)
+	  {
+		   die("Errpr!:".$e->getMessage());
+	  }
+}
 
   //Senden der Posts in forgegebener form an index zur ausgabe
   function Textausgeben()
   {
+		Auslesen();
     foreach ($post_array as $key => $post)
     {
 	?>
