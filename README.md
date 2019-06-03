@@ -9,6 +9,9 @@ Passwort: Umu
 Nutzername: AllMightyPotatoBeing
 Email: praise@potato.com
 Passwort: POTATONR1
+<br>
+Nutzername CodeVein
+Passwort CodeVein
 
 
 Namevorschläge für das Endprodukt:
