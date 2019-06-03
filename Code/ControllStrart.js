@@ -7,21 +7,25 @@ var modelPost = document.getElementById('ModelPost');
 // Beide Button für jeweils beide Modale
 var btnRegister = document.getElementById("btnRegister");
 var btnLogin = document.getElementById("btnLogin");
-var btnPost = document.getElementById("btPost");
+var btnPost = document.getElementById("btnPost");
 
 // Hier bekommt man das <span> element welches zum Schließen der Modale da ist
 var span = document.getElementsByClassName("close")[0];
 var span2 = document.getElementsByClassName("close2")[0];
 
-// Modale bei bestimmten button öffnen
-btnRegister.onclick = function()
-{
-  modalRegister.style.display = "block";
-}
 
-btnLogin.onclick = function()
+if(btnRegister != null)
 {
-  modalLogin.style.display = "block";
+	// Modale bei bestimmten button öffnen
+	btnRegister.onclick = function()
+	{
+	  modalRegister.style.display = "block";
+	}
+
+	btnLogin.onclick = function()
+	{
+	  modalLogin.style.display = "block";
+	}
 }
 
 btnPost.onclick = function()

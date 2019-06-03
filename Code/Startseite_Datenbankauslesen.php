@@ -28,7 +28,7 @@
           FROM kommentar k
           JOIN kommentar_post kp
           ON k.ID = kp.KommentarID
-          AND kp.PostID='.$row[0]) as $row2)
+          AND kp.PostID='.$post->getId()) as $row2)
       {
         $kommentar = new Kommentar();
         $kommentar->setId($row2[0]);

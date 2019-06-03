@@ -10,11 +10,33 @@
       <?php include ("Startseite_Datenbankauslesen.php"); ?>
       <?php include ("Posten.php"); ?>
 
-		  <?php
-			if(session_id() == '' || !isset($_SESSION)) {
-    // session isn't started
-    session_start();
-}
+	 <script>
+		function DatenbankAuslesen()
+		{
+
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function()
+			{
+				if(this.readyState == 4 && this.status == 200)
+				{
+					<?php Textausgeben(); ?>
+				}
+			};
+			xmlhttp.open("GET", "Startseite_Datenbankauslesen.php");
+			xmlhttp.send();
+			
+		
+		}
+	</script>
+	  
+	  
+	<?php
+			if(session_id() == '' || !isset($_SESSION)) 
+			{
+				// session isn't started
+				session_start();
+			}
+			
     		$server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt;
     		host=localhost';
 
@@ -45,18 +67,18 @@
 					<?php
 
     			}
-          else
-          {
-    					//$errorMessage = "E-Mail oder Passwort war ung�ltig<br>";
-						if(isset($user['Nutzername']))
-						{
+				  else
+				  {
+					//$errorMessage = "E-Mail oder Passwort war ung�ltig<br>";
+					if(isset($user['Nutzername']))
+					{
 						$errorMessage = $user['Nutzername'];
-						}
-						else
-						{
-							$errorMessage = "Kein Nutzer vorhanden";
-						}
-    			}
+					}
+					else
+					{
+						$errorMessage = "Kein Nutzer vorhanden";
+					}
+				}
     		}
 
     		if(isset($_GET["registrieren"]))
@@ -87,6 +109,7 @@
     					$errorMessage = "Diese E-Mail-Adresse ist bereits vergeben";
     				}
     			}
+				
     			if(!$error)
     			{
     				$password_hash = password_hash($password, PASSWORD_DEFAULT);
@@ -95,17 +118,17 @@
     				$result = $statement->execute(array('username' =>$username, 'password' => $password_hash, 'email' => $email));
 
     				if($result)
-            {
+					{
     					$_SESSION['email'] = $email;
     					$_SESSION['passwort'] = $password;
     					$_SESSION['benutzername'] = $username;
     					$_SESSION['admin'] = 0;
     					$showFormular = false;
     				}
-            else
-            {
-    					echo 'Beim Registrieren gab es einen Fehler';
-    				}
+					else
+					{
+						echo 'Beim Registrieren gab es einen Fehler';
+					}
     			}
     		}
 
@@ -115,13 +138,15 @@
     			session_start();
     		}
 
-        if(isset ($_Get["Post"]))
-        {
-          $ueberschrift = $_POST['ueberschrift'];
-    			$inhalt = $_POST['inhalt'];
+			if(isset($_GET['erstellePost']))
+			{
+			  $ueberschrift = $_POST['ueberschrift'];
+			  $inhalt = $_POST['inhalt'];
 
-          posten($_SESSION['userid'], $ueberschrift, $inhalt);
-        }
+				
+			  
+			  posten($_SESSION['userid'], $ueberschrift, $inhalt);
+			}
     	?>
   </head>
 
@@ -215,7 +240,7 @@
         <h2>Post</h2>
   </div>
   <div class="modal-body">
-    <form action="?Post=1" method="post">
+    <form action="?erstellePost=1" method="post">
       <div class="form-group">
           <label>Ueberschrift</label>
           <input type="text" name="ueberschrift" class="form-control">
@@ -224,6 +249,17 @@
           <label>Inhalt</label>
           <input type="text" name="inhalt" class="form-control">
       </div>
+	  <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Post">
+        </div>
+		<div class="form-group">
+            <?php
+				if(isset($errorMessage))
+				{	
+        			echo $errorMessage;
+    			}
+  			?>
+          </div>
     </form>
   </div>
   <div class="modal-footer">
@@ -246,6 +282,7 @@
           <ul class="navbar-nav ml-auto">
             <li>
               	<input type="button" id="btnPost" value="Post erstellen" class="login"/>
+			</li>
             <li>
         				<?php
         					if(!isset($_SESSION['benutzername']))
@@ -325,31 +362,6 @@
       <footer class="page-footer">
             col-md-12(Fu�zeile)
       </footer>
-   <script src="../js/ControllStrart.js"></script>
+   <script src="ControllStrart.js"></script>
 </body>
-
-<script>
-  function DatenbankAuslesen()
-  {
-  	while(true)
-  	{
-  		var xmlhttp = new XMLHttpRequest();
-  		xmlhttp.onreadystatechange = function()
-  		{
-  			if(this.readyState == 4 && this.status == 200)
-  			{
-  				Textausgeben();
-  			}
-  		};
-  		xmlhttp.open("GET", "Startseite_Datenbankauslesen.php");
-  		xmlhttp.send();
-  		sleep(500);
-  	}
-  }
-
-  function Sleep(milliseconds) {
-     return new Promise(resolve => setTimeout(resolve, milliseconds));
-  }
-</script>
-
 </html>
