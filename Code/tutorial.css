@@ -1,6 +1,7 @@
 body
 {
   background-color: #1a1a1a;
+  color: white;
 }
 
 
@@ -193,6 +194,7 @@ body
 a
 {
   float: right;
+  margin-right: 10px;
 }
 
 a:link
@@ -203,6 +205,11 @@ a:link
 a:visited
 {
   color: lightgray;
+}
+
+a:hover
+{
+    text-decoration: none;
 }
 
 img
