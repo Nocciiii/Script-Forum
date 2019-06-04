@@ -6,21 +6,20 @@
   $tabellenstring="<tr>";
   include("klassen.php");
   $post_array = array();
-  Textausgeben($post_array);
+  Textausgeben($post_array, $tabellenstring);
   $tabellenstring=$tabellenstring."</tr>";
-  return $tabellenstring;
+  echo $tabellenstring;
   
-	function Auslesen()
+	function Auslesen($post_array, $tabellenstring)
 	{
 	  $server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt;
 	  host=localhost';
-	  $user='root';
+	  $user='fi11';
 	  $options =array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
 
 	  try
 	  {
 	    $pdo = new PDO ($server, $user,'',$options);
-	    global $post_array;
 	    foreach($pdo->query('SELECT * from post') as $row)
 	    {
 	      $post = new Post();
@@ -59,9 +58,9 @@
 }
 
   //Senden der Posts in forgegebener form an index zur ausgabe
-  function Textausgeben($post_array)
+  function Textausgeben($post_array, $tabellenstring)
   {
-	Auslesen();
+	Auslesen($post_array, $tabellenstring);
     foreach ($post_array as $key => $post)
     {
       if($_SESSION['Admin'] == 1)
@@ -93,8 +92,6 @@
 		$tabellenstring=$tabellenstring.$inhalt;
 		$tabellenstring=$tabellenstring."</td>";
       }
-	  
-	  return $tabellenstring;
 //toDo Posts gewünscht sotieren
       //$uebershriftr = "<div class='col col-md-12'>".$post.getUeberschrift()."</div>";
 
