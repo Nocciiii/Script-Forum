@@ -20,8 +20,8 @@ Nero's Burning Paradise
 <br>
 UmU Paradise
 <br>
-
-    Truck-kun: Das Isekai Diskussionsform!
+Truck-kun: Das Isekai Diskussionsform!
 <br>
-
-    Bei Code Vein Bild: "Gid Good, das Code Vein Forum"
+Bei Code Vein Bild: "Gid Good, das Code Vein Forum"
+<br>
+Blood Beads. Weil jeder sie braucht
