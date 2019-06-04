@@ -143,9 +143,6 @@
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav ml-auto">
             <li>
-              	<input type="button" id="btnPost" value="Post erstellen" class="login"/>
-			     </li>
-            <li>
         				<?php
         					if(!isset($_SESSION['benutzername']))
         					{
@@ -157,10 +154,11 @@
         					else
         					{
         						?>
-								<form action="?logout=1" method="post">
-        							<span>Sie sind angemeldet als <?= $_SESSION['admin'];?></span>
-        							<input type="submit" value="Logout" class="login"/>
-								</form>
+        								<form action="?logout=1" method="post">
+                          <input type="button" id="btnPost" value="Post erstellen" class="login float-md-left"/>
+            							<span>Sie sind angemeldet als <?= $_SESSION['admin'];?></span>
+            							<input type="submit" value="Logout" class="login"/>
+        								</form>
         						<?php
         					}
         				?>
