@@ -25,3 +25,5 @@ Truck-kun: Das Isekai Diskussionsform!
 Bei Code Vein Bild: "Gid Good, das Code Vein Forum"
 <br>
 Blood Beads. Weil jeder sie braucht
+<br>
+Blood Beads for your Thoughts
