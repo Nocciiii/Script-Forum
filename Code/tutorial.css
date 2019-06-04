@@ -162,10 +162,9 @@ body
   border-right: 2px solid black;
 }
 
-.page-footer
+footer
 {
   min-height: 50px;
-  max-height: 90px;
   margin-top: 10px;
 
   background-color: black;
@@ -193,7 +192,6 @@ body
 
 a
 {
-  float: right;
   margin-right: 10px;
 }
 
