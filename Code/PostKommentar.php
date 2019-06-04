@@ -265,7 +265,7 @@
     </div>
 
       <footer class="page-footer">
-            col-md-12(Fu�zeile)
+            HTML, CSS & JS: Florian Schmidt / PHP: Jamie Kümmert & Timo Adelman  <a href="impresum.html">impresum</a><a href="datenschutz.html">datenschutz</a>
       </footer>
    <script src="../js/ControllStrart.js"></script>
 </body>
