@@ -365,7 +365,7 @@ async function DatenbankAuslesen()
 		}
 		xmlhttp.open("GET","Startseite_Datenbankauslesen.php",true);
 		xmlhttp.send();
-		await Sleep(1000);
+		await Sleep(5000);
 	}
 }
 function Sleep(millisconds)

@@ -60,20 +60,3 @@ window.onclick = function(event)
     modelPost.style.display = "none";
   }
 }
-
-function DatenbankAuslesen()
-{
-
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function()
-	{
-		if(this.readyState == 4 && this.status == 200)
-		{
-			<?php Textausgeben(); ?>
-		}
-	};
-	xmlhttp.open("GET", "Startseite_Datenbankauslesen.php");
-	xmlhttp.send();
-
-
-}
