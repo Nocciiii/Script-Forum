@@ -251,7 +251,9 @@
 
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="navbar-header">
-          <span class="navbarText" href="#">M&M</span>
+          <img src="../Bilder/logo.png"></img>
+          <span class="navbarText">Nero's Burning Paradise</span>
+            <br class="d-md-none">
           <button class="navbar-toggler navbar-left" type="button" data-toggle="collapse" data-target="#navbarText" >
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -260,7 +262,7 @@
           <ul class="navbar-nav ml-auto">
             <li>
               	<input type="button" id="btnPost" value="Post erstellen" class="login"/>
-			</li>
+			     </li>
             <li>
         				<?php
         					if(!isset($_SESSION['benutzername']))
@@ -339,7 +341,10 @@
     </div>
 
       <footer class="page-footer">
-          HTML, CSS & JS: Florian Schmidt / PHP: Jamie Kümmert & Timo Adelman  <a href="impresum.html">impresum</a><a href="datenschutz.html">datenschutz</a>
+        HTML, CSS & JS: Florian Schmidt / PHP: Jamie Kümmert & Timo Adelman
+        <br class="d-md-none">
+        <a class="float-sm-left float-md-right" href="impresum.html">impresum</a>
+        <a class="float-sm-left float-md-right" href="datenschutz.html">datenschutz</a>
       </footer>
    <script src="ControllStrart.js"></script>
 </body>
