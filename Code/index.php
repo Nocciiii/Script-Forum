@@ -261,25 +261,23 @@
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav ml-auto">
             <li>
-              	<input type="button" id="btnPost" value="Post erstellen" class="login"/>
-			     </li>
-            <li>
         				<?php
         					if(!isset($_SESSION['benutzername']))
         					{
-        						?>
-        							<input type="button" id="btnLogin" value="Login" class="login"/>
+        				?>
+        						  <input type="button" id="btnLogin" value="Login" class="login"/>
         							<input type="button" id="btnRegister" value="Registrieren" class="login"/>
-        						<?php
+        				<?php
         					}
         					else
         					{
-        						?>
-								<form action="?logout=1" method="post">
-        							<span>Sie sind angemeldet als <?= $_SESSION['admin'];?></span>
-        							<input type="submit" value="Logout" class="login"/>
-								</form>
-        						<?php
+        				?>
+								      <form action="?logout=1" method="post">
+                        <input type="button" id="btnPost" value="Post erstellen" class="login float-md-left"/>
+        							  <span>Sie sind angemeldet als <?= $_SESSION['admin'];?></span>
+        							  <input type="submit" value="Logout" class="login"/>
+								      </form>
+        			  <?php
         					}
         				?>
 
@@ -365,7 +363,7 @@ async function DatenbankAuslesen()
 		}
 		xmlhttp.open("GET","Startseite_Datenbankauslesen.php",true);
 		xmlhttp.send();
-		await Sleep(1000);
+		await Sleep(5000);
 	}
 }
 function Sleep(millisconds)
