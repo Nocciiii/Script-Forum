@@ -92,6 +92,7 @@ body
     color:#47ea15;
 }
 
+/*button*/
 .login
 {
   margin-left: auto;
@@ -120,49 +121,6 @@ body
 
   background-color: darkgray;
   color: lightgray;
-
-  position: absolute;
-  bottom: 10px;
-  right: 5px;
-}
-
-
-.eingabein
-{
-  min-height: 20px;
-  min-width: 88%;
-
-  margin-left: auto;
-  margin-right: auto;
-
-  border: 1px solid #2a2b2d;
-  border-radius: 4px;
-
-  background-color: darkgray;
-  color: lightgray;
-
-  position: absolute;
-  bottom: 30px;
-  right: 5px;
-}
-
-.eingabebu
-{
-  min-height: 20px;
-  min-width: 8%;
-
-  margin-left: auto;
-  margin-right: auto;
-
-  border: 1px solid #2a2b2d;
-  border-radius: 4px;
-
-  background-color: darkgray;
-  color: lightgray;
-
-  position: absolute;
-  bottom: 30px;
-  left: 5px;
 }
 
 .delet:hover
@@ -170,11 +128,31 @@ body
   background-color: rgba(255, 255, 255, 0.1);;
   color: white !important;
 }
+
+.d-md-none
+{
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #2a2b2d;
+  border-radius: 4px;
+  background-color: darkgray;
+  color: lightgray;
+}
+
+.d-md-none:hover
+{
+  background-color: rgba(255, 255, 255, 0.1);;
+  color: white !important;
+}
+
+/*main*/
 .container
 {
   width: 75%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 10px;
+
   padding: 0px;
   max-width: none;
   color: white;
@@ -202,6 +180,8 @@ body
   position: relative;
 }
 
+
+/*header*/
 .navbar
 {
   border-radius: 0px 0px 4px 4px;
@@ -237,22 +217,7 @@ footer
   align-items: center;
 }
 
-.d-md-none
-{
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid #2a2b2d;
-  border-radius: 4px;
-  background-color: darkgray;
-  color: lightgray;
-}
-
-.d-md-none:hover
-{
-  background-color: rgba(255, 255, 255, 0.1);;
-  color: white !important;
-}
-
+/*links und images*/
 a
 {
   margin-right: 10px;

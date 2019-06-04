@@ -128,9 +128,9 @@
     	?>
   </head>
 
-  <div id="ModalRegister" class="modal">
+  <div id="ModalRegister" class="modal w-100">
   <!-- Modal content -->
-    <div class="modal-content">
+    <div class="modal-content w-100">
   		<div class="modal-header">
   		    <span class="close">&times;</span>
           <h2>Registrieren</h2>
@@ -170,10 +170,10 @@
 </div>
 
 <!-- The Modal -->
-<div id="ModalLogin" class="modal">
+<div id="ModalLogin" class="modal w-100">
 
   <!-- Modal content -->
-  <div class="modal-content">
+  <div class="modal-content w-100">
 		<div class="modal-header">
   		<span class="close2">&times;</span>
           <h2>Login</h2>
@@ -210,10 +210,10 @@
 
 
 <!-- The Modal -->
-<div id="ModelPost" class="modal">
+<div id="ModelPost" class="modal w-100">
 
 <!-- Modal content -->
-<div class="modal-content">
+<div class="modal-content w-100">
   <div class="modal-header">
         <h2>Post</h2>
   </div>
