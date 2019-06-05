@@ -6,13 +6,13 @@
 //Auslesen
 	$server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt;
 	host=localhost';
-	$user='fi11';
+	$user='root';
 	$options =array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
 	include("klassen.php");
-	
+
 	$post_array = array();
 	try
-	{ 
+	{
 	  $pdo = new PDO ($server, $user,'',$options);
 	  foreach($pdo->query('SELECT * from post') as $row)
 	  {
@@ -46,15 +46,15 @@
 	{
 	   die("Errpr!:".$e->getMessage());
 	}
-	
-	
+
+
   echo "<tr>";
 
   //Senden der Posts in forgegebener form an index zur ausgabe
     foreach ($post_array as $key => $post)
     {
 	  echo "<td>";
-      if($_SESSION['admin'] == 1)
+      if(isset($_SESSION['admin'])&&($_SESSION['admin'] == 1))
       {
         //auslesen der Überschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
         echo "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=";
@@ -85,9 +85,9 @@
 		echo "</td>";
       }
     }
-	
+
 	echo "</tr>";
-  
+
 
   function cmp($time1, $time2)
   {

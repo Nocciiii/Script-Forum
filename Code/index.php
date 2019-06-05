@@ -20,7 +20,7 @@
     		$server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt;
     		host=localhost';
 
-    		$user='fi11';
+    		$user='root';
 
     		$pdo = new PDO ($server, $user,'');
     		if(isset($_GET['login']))
@@ -92,15 +92,15 @@
     			{
     				$password_hash = password_hash($password, PASSWORD_DEFAULT);
     				$admin = 0;
-    				$statement = $pdo->prepare("INSERT INTO Nutzer (Nutzername, Passwort, Email) VALUES (:username, :password, :email)");
-    				$result = $statement->execute(array('username' =>$username, 'password' => $password_hash, 'email' => $email));
+    				$statement = $pdo->prepare("INSERT INTO Nutzer (Nutzername, Passwort, Email, Admin) VALUES (:username, :password, :email, :admin)");
+    				$result = $statement->execute(array('username' =>$username, 'password' => $password_hash, 'email' => $email, 'admin' => $admin));
 
     				if($result)
 					{
     					$_SESSION['email'] = $email;
     					$_SESSION['passwort'] = $password;
     					$_SESSION['benutzername'] = $username;
-    					$_SESSION['admin'] = 0;
+    					$_SESSION['admin'] = $admin;
     					$showFormular = false;
     				}
 					else

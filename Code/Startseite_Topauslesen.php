@@ -6,13 +6,13 @@
 //Auslesen
 	$server  ='mysql:dbname=fi2017_gruppe1_projekt_adelmann_kuemmert_schmidt;
 	host=localhost';
-	$user='fi11';
+	$user='root';
 	$options =array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
 	include("klassen.php");
-	
+
 	$post_array = array();
 	try
-	{ 
+	{
 	  $pdo = new PDO ($server, $user,'',$options);
 	  foreach($pdo->query('SELECT * from post') as $row)
 	  {
@@ -46,8 +46,8 @@
 	{
 	   die("Errpr!:".$e->getMessage());
 	}
-	
-	
+
+
   echo "<tr>";
 
   //Senden der Posts in forgegebener form an index zur ausgabe
@@ -63,9 +63,9 @@
 		echo "'</h1>";
 		echo "</td>";
     }
-	
+
 	echo "</tr>";
-  
+
 
   function cmp($kommentare1, $kommentare2)
   {
