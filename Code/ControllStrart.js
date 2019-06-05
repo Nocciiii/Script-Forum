@@ -27,11 +27,14 @@ if(btnRegister != null)
 	  modalLogin.style.display = "block";
 	}
 }
-
-btnPost.onclick = function()
+else
 {
-  modelPost.style.display = "block";
+	btnPost.onclick = function()
+	{
+	  modelPost.style.display = "block";
+	}
 }
+
 
 // "schließt" beide modale wenn man auf das X klickt
 span.onclick = function()

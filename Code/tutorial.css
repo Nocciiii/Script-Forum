@@ -258,5 +258,15 @@ h5
 
 .eingabebu
 {
-  width: 10%;
+  width: auto;
+  min-height: 10px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  border: 1px solid #2a2b2d;
+  border-radius: 4px;
+
+  background-color: darkgray;
+  color: lightgray;
 }

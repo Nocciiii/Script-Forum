@@ -249,7 +249,7 @@
  <body id="span" onload="DatenbankAuslesen()">
 
 
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark text-center">
         <div class="navbar-header">
           <img src="../Bilder/logo.png"></img>
           <span class="navbarText">Nero's Burning Paradise</span>
@@ -273,7 +273,7 @@
         					{
         				?>
 								      <form action="?logout=1" method="post">
-                        <input type="button" id="btnPost" value="Post erstellen" class="login float-md-left"/>
+                        <input type="button" id="btnPost" value="Post erstellen" class="login mr-3"/>
         							  <span>Sie sind angemeldet als <?= $_SESSION['admin'];?></span>
         							  <input type="submit" value="Logout" class="login"/>
 								      </form>
@@ -315,7 +315,9 @@
       <div class="row">
 
         <div class="col-md-3 d-md-block">
-          <button class="btn d-md-none" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2"></button>
+          <button class="btn d-md-none" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">
+            <span class="navbar-toggler-icon"></span>
+          </button>
           <div class="row multi-collapse show" id="multiCollapseExample1">
           </div>
           <div class="row multi-collapse show" id="multiCollapseExample2">
@@ -323,11 +325,13 @@
         </div>
 
         <div class='col-md-6' id="table">
-		<span id="tabelle"></span>
+		        <span id="tabelle"></span>
         </div>
 
         <div class="col-md-3">
-          <button class="btn d-md-none" data-toggle="collapse" data-target="#Collapsright" aria-expanded="false" aria-controls="collapseOne"></button>
+          <button class="btn d-md-none" data-toggle="collapse" data-target="#Collapsright" aria-expanded="false" aria-controls="collapseOne">
+            <span class="navbar-toggler-icon"></span>
+          </button>
           <div class="row show" id="Collapsright">
             <div class="col-md-12 right">
               col-md-3(Sidbar left top)
