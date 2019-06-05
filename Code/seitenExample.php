@@ -7,6 +7,7 @@
           <link rel="stylesheet" href="tutorial.css" />
   		<script src="../js/jquery-3.1.1.min.js"></script>
   		<script src="../js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   </head>
 
@@ -131,12 +132,12 @@
  <body id="span" onload="DatenbankAuslesen()">
 
 
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark text-center">
         <div class="navbar-header">
           <img src="../Bilder/logo.png"></img>
           <span class="navbarText">Nero's Burning Paradise</span>
             <br class="d-md-none">
-          <button class="navbar-toggler navbar-left" type="button" data-toggle="collapse" data-target="#navbarText" >
+          <button class="navbar-toggler navbar-left float-left" type="button" data-toggle="collapse" data-target="#navbarText" >
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
@@ -147,15 +148,18 @@
         					if(!isset($_SESSION['benutzername']))
         					{
         						?>
-        							<input type="button" id="btnLogin" value="Login" class="login"/>
-        							<input type="button" id="btnRegister" value="Registrieren" class="login"/>
+                      <input type="button" id="btnPost" value="Post erstellen" class="login mr-md-3 mx-xs-auto"/>
+                      <br class="d-md-none">
+        							<input type="button" id="btnLogin" value="Login" class="login mx-xs-auto"/>
+                      <br class="d-md-none">
+        							<input type="button" id="btnRegister" value="Registrieren" class="login mx-xs-auto"/>
         						<?php
         					}
         					else
         					{
         						?>
         								<form action="?logout=1" method="post">
-                          <input type="button" id="btnPost" value="Post erstellen" class="login float-md-left"/>
+
             							<span>Sie sind angemeldet als <?= $_SESSION['admin'];?></span>
             							<input type="submit" value="Logout" class="login"/>
         								</form>
@@ -197,17 +201,19 @@
       <div class="row">
 
         <div class="col-md-3 d-md-block">
-          <button class="btn d-md-none" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2"></button>
+          <button class="btn d-md-none" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">
+            <i class="fa fa-bars"></i>
+          </button>
           <div class="row multi-collapse show" id="multiCollapseExample1">
             <div class='col-md-12' id="komentar">
-              <h5>" $post.getUeberschrift()"</h5>";
-              <h5>" $post.getUeberschrift()"</h5>";
+              <h5 class="text-truncate">" $post.getUeberschrift()"</h5>";
+              <h5 class="text-truncate">" $post.getUeberschrift()"</h5>";
             </div>
           </div>
           <div class="row multi-collapse show" id="multiCollapseExample2">
             <div class='col-md-12' id="komentar">
-              <h5>" $post.getUeberschrift()"</h5>";
-              <h5>" $post.getUeberschrift()"</h5>";
+              <h5 class="text-truncate">" $post.getUeberschrift()"</h5>";
+              <h5 class="text-truncate">" $post.getUeberschrift()"</h5>";
             </div>
           </div>
         </div>
@@ -216,7 +222,7 @@
           <a href='http://172.16.5.55/bsz/fi11_1/?post='>
             <div class='col-md-12' id="komentar">
               <div style="height:auto;">
-                <h5>
+                <h5 class="text-truncate">
                   "$post.getUeberschrift()"
                 </h5>
                 "$post.getInhalt()"
@@ -260,7 +266,7 @@
           <a href='http://172.16.5.55/bsz/fi11_1/?post='>
             <div class='col-md-12' id="komentar">
               <div style="height:auto;">
-                <h5>
+                <h5 class="text-truncate">
                   "$post.getUeberschrift()"
                 </h5>
                 "$post.getInhalt()"
@@ -304,7 +310,9 @@
         </div>
 
         <div class="col-md-3">
-          <button class="btn d-md-none" data-toggle="collapse" data-target="#Collapsright" aria-expanded="false" aria-controls="collapseOne"></button>
+          <button class="btn d-md-none" data-toggle="collapse" data-target="#Collapsright" aria-expanded="false" aria-controls="collapseOne">
+            <i class="fa fa-bars"></i>
+          </button>
           <div class="row show" id="Collapsright">
             <div class="col-md-12 right">
               col-md-3(Sidbar left top)
