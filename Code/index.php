@@ -7,7 +7,6 @@
           <link rel="stylesheet" href="tutorial.css" />
   		<script src="../js/jquery-3.1.1.min.js"></script>
   		<script src="../js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <?php include ("Startseite_Datenbankauslesen.php"); ?>
       <?php include ("Posten.php"); ?>
 
@@ -317,7 +316,7 @@
 
         <div class="col-md-3 d-md-block">
           <button class="btn d-md-none" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">
-            <i class="fa fa-bars"></i>
+            <span class="navbar-toggler-icon"></span>
           </button>
           <div class="row multi-collapse show" id="multiCollapseExample1">
           </div>
@@ -331,12 +330,10 @@
 
         <div class="col-md-3">
           <button class="btn d-md-none" data-toggle="collapse" data-target="#Collapsright" aria-expanded="false" aria-controls="collapseOne">
-            <i class="fa fa-bars"></i>
+            <span class="navbar-toggler-icon"></span>
           </button>
           <div class="row show" id="Collapsright">
-            <div class="col-md-12 right">
-              col-md-3(Sidbar left top)
-            </div>
+            <span id="topPosts"></span>
           </div>
         </div>
 
@@ -367,6 +364,16 @@ async function DatenbankAuslesen()
 			}
 		}
 		xmlhttp.open("GET","Startseite_Datenbankauslesen.php",true);
+		xmlhttp.send();
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function()
+		{
+			if(this.readyState == 4 && this.status == 200)
+			{
+				document.getElementById("topPosts").innerHTML = this.responseText;
+			}
+		}
+		xmlhttp.open("GET","Startseite_Topauslesen.php",true);
 		xmlhttp.send();
 		await Sleep(5000);
 	}

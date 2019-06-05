@@ -53,51 +53,29 @@
   //Senden der Posts in forgegebener form an index zur ausgabe
     foreach ($post_array as $key => $post)
     {
-	  echo "<td>";
-      if($_SESSION['admin'] == 1)
-      {
-        //auslesen der Überschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
-        echo "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=";
+		echo "<td>";
+
+		//auslesen der Überschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
+		echo "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=";
 		echo $post.getId();
 		echo "'> <div class='col-md-12' id='komentar'> <h1>'";
 		echo $post.getUeberschrift();
 		echo "'</h1>";
-        //auslesen des inhalts eines Posts
-        $inhalt = $post.getInhalt()."</div></a>";
-		echo $inhalt;
-        $button = "<form action='postDelete(".$_SESSION['userid'].",".$post.getUeberschrift().",".$post.getInhalt()."')'>".
-                        "<input type='submit' value='Posten Deleten'></input>".
-                      "</form>";
-		echo $button;
 		echo "</td>";
-      }
-      else
-      {
-        //auslesen der Überschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
-        echo "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=";
-		echo $post.getId();
-		echo "'> <div class='col-md-12' id='komentar'> <h1>'";
-		echo $post.getUeberschrift();
-		echo "'</h1>";
-        //auslesen des inhalts eines Posts
-        $inhalt = $post.getInhalt()."</div></a>";
-		echo $inhalt;
-		echo "</td>";
-      }
     }
 	
 	echo "</tr>";
   
 
-  function cmp($time1, $time2)
+  function cmp($kommentare1, $kommentare2)
   {
-  	if($time1<$time2)
+  	if($kommentare1<$kommentare2)
   	{
 		return 1;
 	}
 	else
 	{
-		if($time1>$time2)
+		if($kommentare1>$kommentare2)
 		{
 			return -1;
 		}
