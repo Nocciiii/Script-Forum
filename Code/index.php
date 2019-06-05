@@ -254,7 +254,7 @@
           <img src="../Bilder/logo.png"></img>
           <span class="navbarText">Nero's Burning Paradise</span>
             <br class="d-md-none">
-          <button class="navbar-toggler navbar-left" type="button" data-toggle="collapse" data-target="#navbarText" >
+          <button class="navbar-toggler navbar-left float-left" type="button" data-toggle="collapse" data-target="#navbarText" >
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
