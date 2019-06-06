@@ -7,9 +7,10 @@
           <link rel="stylesheet" href="tutorial.css" />
   		<script src="../js/jquery-3.1.1.min.js"></script>
   		<script src="../js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <?php include ("Startseite_Datenbankauslesen.php"); ?>
       <?php include ("ControllKommentare.php"); ?>
-      <?php include ("PostDeleteAdmin");
+      <?php include ("PostDeleteAdmin"); ?>
 
 		  <?php
     		session_start();
@@ -177,7 +178,9 @@
 
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="navbar-header">
-          <span class="navbarText" href="#">M&M</span>
+          <img src="../Bilder/logo.png"></img>
+          <span class="navbarText">Nero's Burning Paradise</span>
+          <br class="d-md-none">
           <button class="navbar-toggler navbar-left" type="button" data-toggle="collapse" data-target="#navbarText" >
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -236,37 +239,37 @@
       <div class="row">
 
         <div class="col-md-3">
-          <button class="btn d-md-none" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2"></button>
-          <div class="row multi-collapse show" id="multiCollapseExample1">
-            <div class="col col-md-12">
-              col-md-3(Sidbar right top)
-            </div>
-          </div>
-          <div class="row multi-collapse show" id="multiCollapseExample2">
-            <div class="col col-md-12">
-              col-md-3(Sidbar right botom)
-            </div>
+          <button class="btn d-md-none" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false">
+            <i class="fa fa-bars"></i>
+          </button>
+          <div class="row show" id="multiCollapseExample1">
+            <h3>Eigene Posts</h3>
           </div>
         </div>
 
         <div class='col-md-6' id="table">
+          <span id="tabelle"></span>
         </div>
 
         <div class="col-md-3">
-          <button class="btn d-md-none" data-toggle="collapse" data-target="#Collapsright" aria-expanded="false" aria-controls="collapseOne"></button>
+          <button class="btn d-md-none" data-toggle="collapse" data-target="#Collapsright" aria-expanded="false" aria-controls="collapseOne">
+            <i class="fa fa-bars"></i>
+          </button>
           <div class="row show" id="Collapsright">
-            <div class="col-md-12 right">
-              col-md-3(Sidbar left top)
-            </div>
+            <h3>Top Posts</h3>
+            <span id="topPosts"></span>
           </div>
         </div>
 
       </div>
     </div>
 
-      <footer class="page-footer">
-            HTML, CSS & JS: Florian Schmidt / PHP: Jamie Kümmert & Timo Adelman  <a href="impresum.html">impresum</a><a href="datenschutz.html">datenschutz</a>
-      </footer>
+    <footer class="page-footer">
+      HTML, CSS & JS: Florian Schmidt / PHP: Jamie Kümmert & Timo Adelman
+      <br class="d-md-none">
+      <a class="float-sm-left float-md-right" href="impresum.html">impresum</a>
+      <a class="float-sm-left float-md-right" href="datenschutz.html">datenschutz</a>
+    </footer>
    <script src="../js/ControllStrart.js"></script>
 </body>
 </html>
