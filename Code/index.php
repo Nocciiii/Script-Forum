@@ -8,7 +8,6 @@
   		<script src="../js/jquery-3.1.1.min.js"></script>
   		<script src="../js/bootstrap.min.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <?php include ("Startseite_Datenbankauslesen.php"); ?>
       <?php include ("Posten.php"); ?>
 
 	<?php
@@ -320,7 +319,7 @@
             <i class="fa fa-bars"></i>
           </button>
           <div class="row show" id="multiCollapseExample1">
-            <h3>Eigene Posts</h3>
+		  <span id="ownPosts"><span>
           </div>
         </div>
 
@@ -333,7 +332,6 @@
             <i class="fa fa-bars"></i>
           </button>
           <div class="row show" id="Collapsright">
-            <h3>Top Posts</h3>
             <span id="topPosts"></span>
           </div>
         </div>
@@ -376,6 +374,19 @@ async function DatenbankAuslesen()
 		}
 		xmlhttp.open("GET","Startseite_Topauslesen.php",true);
 		xmlhttp.send();
+		var xmlhttp = new XMLHttpRequest();
+		/*if(isset($_SESSION['userid'])
+		{
+			xmlhttp.onreadystatechange = function()
+			{
+				if(this.readyState == 4 && this.status == 200)
+				{
+					document.getElementById("ownPosts").innerHTML = this.responseText;
+				}
+			}
+			xmlhttp.open("GET","Startseite_Eigeneauslesen.php",true);
+			xmlhttp.send();
+		}*/
 		await Sleep(5000);
 	}
 

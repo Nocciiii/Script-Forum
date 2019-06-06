@@ -48,45 +48,46 @@
 	}
 
 
-  echo "<tr>";
+
 
   //Senden der Posts in forgegebener form an index zur ausgabe
     foreach ($post_array as $key => $post)
     {
-	  echo "<td>";
+
       if(isset($_SESSION['admin'])&&($_SESSION['admin'] == 1))
       {
         //auslesen der Überschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
-        echo "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=";
+        echo "<a href='http://172.16.5.55/bsz/fi11_1/Projekte2/K%C3%BCmmert_Adelmann_Schmidt/Code/PostKommentar.php?post=";
 		echo $post->getId();
-		echo "'> <div class='col-md-12' id='komentar'> <h1>'";
+		echo "'> <div class='col-md-12' id='komentar'> <div style='height:auto; font-size:20px; word-wrap: break-word;'> <h4>'";
 		echo $post->getUeberschrift();
-		echo "'</h1>";
+		echo "'</h4>";
         //auslesen des inhalts eines Posts
-        $inhalt = $post->getInhalt()."</div></a>";
-		echo $inhalt;
+        $inhalt = $post->getInhalt();
+        echo $inhalt;
+		echo "</div><div style='height: auto; bottom: 0;'>";
         $button = "<form action='postDelete(".$_SESSION['userid'].",".$post.getUeberschrift().",".$post.getInhalt()."')'>".
-                        "<input type='submit' value='Posten Deleten'></input>".
-                      "</form>";
-		echo $button;
-		echo "</td>";
+                    "<input type='submit' value='Posten Deleten'></input>".
+                   "</form>";
+		echo $button."</div></div></a>";
+
       }
       else
       {
         //auslesen der Überschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
-        echo "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=";
+        echo "<a href='http://172.16.5.55/bsz/fi11_1/Projekte2/K%C3%BCmmert_Adelmann_Schmidt/Code/PostKommentar.php?post=";
 		echo $post->getId();
-		echo "'> <div class='col-md-12' id='komentar'> <h1>'";
+		echo "'> <div class='col-md-12' id='komentar' style='height:auto; font-size:20px; word-wrap: break-word;'> <h4>'";
 		echo $post->getUeberschrift();
-		echo "'</h1>";
+		echo "'</h4>";
         //auslesen des inhalts eines Posts
         $inhalt = $post->getInhalt()."</div></a>";
 		echo $inhalt;
-		echo "</td>";
+
       }
     }
 
-	echo "</tr>";
+
 
 
   function cmp($time1, $time2)

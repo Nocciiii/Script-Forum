@@ -182,6 +182,11 @@ body
   position: relative;
 }
 
+span
+{
+	width: 100%;
+}
+
 
 /*header*/
 .navbar

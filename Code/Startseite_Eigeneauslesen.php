@@ -14,7 +14,7 @@
 	try
 	{
 	  $pdo = new PDO ($server, $user,'',$options);
-	  foreach($pdo->query('SELECT * from post') as $row)
+	  foreach($pdo->query('SELECT * from post p JOIN nutzer_Post np ON np.NutzerID="'.$_SESSION['userid'].'" AND np.PostID=p.ID') as $row)
 	  {
 	    $post = new Post();
 		$post->setId($row[0]);
@@ -40,7 +40,6 @@
 	    $post->setKommentare($kommentar_array);
 	    $post_array[]=$post;
 	  }
-	    usort($post_array, "cmp");
 	}
 	catch(Exception $e)
 	{
@@ -49,8 +48,8 @@
 
 
 
-//auslesen der Überschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
-		echo "<div class='col-md-12' id='komentar' style='min-width: 100%;'><h3>Top Posts</h3>";
+//auslesen der Ãberschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
+		echo "<div class='col-md-12' id='komentar'><h3>Top Posts</h3>";
 		
   //Senden der Posts in forgegebener form an index zur ausgabe
     foreach ($post_array as $key => $post)
@@ -59,26 +58,4 @@
 		echo "<h4>".$post->getUeberschrift()."</h4></a>";
     }
 echo "</div>";
-
-
-
-  function cmp($kommentare1, $kommentare2)
-  {
-  	if($kommentare1<$kommentare2)
-  	{
-		return 1;
-	}
-	else
-	{
-		if($kommentare1>$kommentare2)
-		{
-			return -1;
-		}
-		else
-		{
-			return 0;
-		}
-	}
-
-  }
 ?>
