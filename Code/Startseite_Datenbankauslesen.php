@@ -58,12 +58,12 @@
       {
         //auslesen der Überschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
         echo "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=";
-		echo $post.getId();
+		echo $post->getId();
 		echo "'> <div class='col-md-12' id='komentar'> <h1>'";
-		echo $post.getUeberschrift();
+		echo $post->getUeberschrift();
 		echo "'</h1>";
         //auslesen des inhalts eines Posts
-        $inhalt = $post.getInhalt()."</div></a>";
+        $inhalt = $post->getInhalt()."</div></a>";
 		echo $inhalt;
         $button = "<form action='postDelete(".$_SESSION['userid'].",".$post.getUeberschrift().",".$post.getInhalt()."')'>".
                         "<input type='submit' value='Posten Deleten'></input>".
@@ -75,12 +75,12 @@
       {
         //auslesen der Überschrift des Posts sowie zuwiesung einer Post funktion als Link um die Kommentare zur seite anzuzeigen
         echo "<a href='http://172.16.5.55/bsz/fi11_1/ ?post=";
-		echo $post.getId();
+		echo $post->getId();
 		echo "'> <div class='col-md-12' id='komentar'> <h1>'";
-		echo $post.getUeberschrift();
+		echo $post->getUeberschrift();
 		echo "'</h1>";
         //auslesen des inhalts eines Posts
-        $inhalt = $post.getInhalt()."</div></a>";
+        $inhalt = $post->getInhalt()."</div></a>";
 		echo $inhalt;
 		echo "</td>";
       }
