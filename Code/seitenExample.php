@@ -201,19 +201,14 @@
       <div class="row">
 
         <div class="col-md-3 d-md-block">
-          <button class="btn d-md-none" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">
+          <button class="btn d-md-none" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false">
             <i class="fa fa-bars"></i>
           </button>
-          <div class="row multi-collapse show" id="multiCollapseExample1">
+          <div class="row show" id="multiCollapseExample1">
             <div class='col-md-12' id="komentar">
-              <h5 class="text-truncate">" $post.getUeberschrift()"</h5>";
-              <h5 class="text-truncate">" $post.getUeberschrift()"</h5>";
-            </div>
-          </div>
-          <div class="row multi-collapse show" id="multiCollapseExample2">
-            <div class='col-md-12' id="komentar">
-              <h5 class="text-truncate">" $post.getUeberschrift()"</h5>";
-              <h5 class="text-truncate">" $post.getUeberschrift()"</h5>";
+              <h3>Eigene Posts</h3>
+              <h4 class="text-truncate">" $post.getUeberschrift()"</h4>";
+              <h4 class="text-truncate">" $post.getUeberschrift()"</h4>";
             </div>
           </div>
         </div>
@@ -221,11 +216,11 @@
         <div class='col-md-6' id="table">
           <a href='http://172.16.5.55/bsz/fi11_1/?post='>
             <div class='col-md-12' id="komentar">
-              <div style="height:auto;">
-                <h5 class="text-truncate">
+              <div style="height:auto; font-size:20px; word-wrap: break-word;">
+                <h4 class="text-truncate">
                   "$post.getUeberschrift()"
-                </h5>
-                "$post.getInhalt()"
+                </h4>
+                "$post.getInhalt()""$post.getInhalt()""$post.getInhalt()""$post.getInhalt()""$post.getInhalt()"
                 <br>
                 <br>
                 <br>
@@ -266,9 +261,9 @@
           <a href='http://172.16.5.55/bsz/fi11_1/?post='>
             <div class='col-md-12' id="komentar">
               <div style="height:auto;">
-                <h5 class="text-truncate">
+                <h4 class="text-truncate">
                   "$post.getUeberschrift()"
-                </h5>
+                </h4>
                 "$post.getInhalt()"
                 <br>
                 <br>
@@ -315,6 +310,7 @@
           </button>
           <div class="row show" id="Collapsright">
             <div class="col-md-12 right">
+              <h3>Top Posts</h3>
               col-md-3(Sidbar left top)
             </div>
           </div>

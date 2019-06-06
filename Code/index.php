@@ -7,10 +7,7 @@
           <link rel="stylesheet" href="tutorial.css" />
   		<script src="../js/jquery-3.1.1.min.js"></script>
   		<script src="../js/bootstrap.min.js"></script>
-<<<<<<< HEAD
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
-=======
->>>>>>> 7fcec9f3e8342df29fdc44e76acbdae5600df52a
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <?php include ("Startseite_Datenbankauslesen.php"); ?>
       <?php include ("Posten.php"); ?>
 
@@ -319,12 +316,11 @@
       <div class="row">
 
         <div class="col-md-3 d-md-block">
-          <button class="btn d-md-none" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">
+          <button class="btn d-md-none" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="row multi-collapse show" id="multiCollapseExample1">
-          </div>
-          <div class="row multi-collapse show" id="multiCollapseExample2">
+          <div class="row show" id="multiCollapseExample1">
+            <h3>Eigene Posts</h3>
           </div>
         </div>
 
@@ -337,6 +333,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="row show" id="Collapsright">
+            <h3>Top Posts</h3>
             <span id="topPosts"></span>
           </div>
         </div>
